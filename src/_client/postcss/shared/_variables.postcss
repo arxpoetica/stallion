@@ -1,0 +1,144 @@
+// https://app.frontify.com/document/84675
+
+// $body-width: 950px;
+// $content-width: 900px;
+
+// $font: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$table-font: Verdana, Geneva, monospace;
+$mono-font: Consolas, "Liberation Mono", Courier, monospace;
+// $input-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+// $input-font: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+
+
+$light: 200;
+$normal: 400;
+$bold: 600;
+$heavy: 800;
+
+$white: white;
+$black: #1e3d43;
+$bg2: #f4f1d5;
+
+$gray-dark: #3b5054;
+$gray-1: #4e5e61;
+$gray-2: #6b787b;
+$gray-3: #889294;
+$gray-4: #aeb6b8;
+$gray-5: #cbd0d1;
+$gray-6: #e1e5e6;
+$gray-7: #f0f4f5;
+$gray-light: #f7f9fa;
+
+// FIXME:
+$red-dark: #bd0d05;
+$red-d1: #e53c34;
+$red-main: #ef5750;
+$red-l1: #f1726c;
+$red-l2: #ee8b86;
+$red-l3: #eeaba7;
+$red-l4: #f2c8c5;
+$red-l5: #f7e3e1;
+$red-l6: #f6edec;
+$red-light: #fcf5f5;
+
+$yellow-dark: #b58f00;
+$yellow-d2: #edc11a;
+$yellow-d1: #dbb10b;
+$yellow-main: #fbc90d;
+$yellow-l1: #fcd84a;
+$yellow-l2: #f9e07c;
+$yellow-l3: #f4e4a6;
+$yellow-l4: #f8ecbe;
+$yellow-l5: #fcf6dd;
+$yellow-light: #faf5e9;
+
+$teal-dark: #046d77;
+$teal-d2: #2c8f99;
+$teal-d1: #5ab2ba;
+$teal-main: #77c5cc;
+$teal-l1: #90d0d5;
+$teal-l2: #aedce0;
+$teal-l3: #cbe8ea;
+$teal-l4: #e2f0f1;
+$teal-light: #f1f9fa;
+
+$orange-dark: #a84b00;
+$orange-d1: #e06400;
+$orange-main: #f56f02;
+$orange-l1: #f5862b;
+$orange-l2: #f4994e;
+$orange-l3: #f4ac70;
+$orange-l4: #f3be92;
+$orange-l5: #f6d6bb;
+$orange-l6: #f6e7da;
+$orange-light: #fcf8f5;
+
+$green-dark: #217000;
+$green-d2: #408424;
+$green-d1: #519834;
+$green-main: #71b256;
+$green-l1: #8cbf77;
+$green-l2: #a5cd94;
+$green-l3: #c0dbb4;
+$green-l4: #dcebd6;
+$green-l5: #ebf4e8;
+$green-light: #f4f9f2;
+
+$links: #8c02b3;
+
+$alert: #f3337b;
+$alert-light: #f36c9f;
+
+$table-border: #ccc;
+$table-bg: #f3f3f3;
+
+$form-white: #fefefe;
+$access-blue: #c4efff;
+$access-blue-alt: #9cccdf;
+
+$facebook: #3b5998;
+$facebook-alt: #5e7bba;
+$google: #4285f4;
+$google-alt: #78a9f7;
+$github: #181717;
+$github-alt: #4f4f4f;
+
+$max: 1000px;
+
+$header-height: 60px;
+$header-height-noauth: 120px;
+
+$z-back: 0;
+$z-middle: 500;
+$z-front: 1000;
+
+// see: https://www.sitepoint.com/the-postcss-guide-to-improving-selectors-and-media-queries/
+
+$res-smallest: 450px;
+$res-small: 768px;
+$res-medium: 1024px;
+$res-large: 1400px;
+$res-huge: 1900px;
+
+@custom-media --smallest (width < $res-smallest);
+@custom-media --small (width < $res-small);
+@custom-media --medium ($res-small <= width < $res-medium);
+@custom-media --medium-down (width < $res-medium);
+@custom-media --medium-up (width >= $res-small);
+@custom-media --large ($res-medium <= width < $res-large);
+@custom-media --large-up (width >= $res-medium);
+@custom-media --huge (width >= $res-large);
+@custom-media --max (width >= $res-huge);
+
+// @media (--small) { :global(body) { background-color: red !important; } }
+// @media (--medium) { :global(body) { background-color: orange !important; } }
+// @media (--large) { :global(body) { background-color: yellow !important; } }
+// @media (--huge) { :global(body) { background-color: green !important; } }
+// @media (--max) { :global(body) { background-color: blue !important; } }
+
+// @media (--small) { .c-App { background-color: red !important; } }
+// @media (--medium) { .c-App { background-color: orange !important; } }
+// @media (--large) { .c-App { background-color: yellow !important; } }
+// @media (--huge) { .c-App { background-color: green !important; } }
+// @media (--max) { .c-App { background-color: blue !important; } }

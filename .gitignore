@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+/__sapper__/
+.esm-cache
+.env
+.env.*
+!.env.defaults
+/_hidden
+/src/_server/data/.migrate-development
+/src/_server/data/migrations-data/passwords.production.csv
+/src/_server/build/caddy/passwd
+/.vscode

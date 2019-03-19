@@ -1,0 +1,691 @@
+// Basics
+// taken from normalize.css v7.0.0 and sanitize.css v5.0.0, but modified for client
+
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
+main,
+details,
+menu {
+	display: block;
+}
+
+a {
+	background-color: transparent;
+	color: $links;
+	line-height: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	-webkit-text-decoration-skip: objects;
+	&:active,
+	&:hover {
+		outline-width: 0;
+		// color: #1468a0;
+		text-decoration: underline;
+	}
+	* {
+		color: $black;
+	}
+}
+
+b,
+strong {
+	font-weight: $bold;
+	line-height: inherit;
+}
+
+/** >>>>>
+ * NOTE: using `medium` font-sizes for old browser fallbacks
+ * everything else is according to front end global style guide
+*/
+
+// h1 small,
+// .h1 small,
+// h2 small,
+// .h2 small,
+// h3 small,
+// .h3 small,
+// h4 small,
+// .h4 small,
+// h5 small,
+// .h5 small,
+// h6 small,
+// .h6 small {
+// 	line-height: 0;
+// 	color: #cacaca;
+// }
+
+h1,
+.h1 {
+	margin: 0 0 2rem;
+	color: inherit;
+	font: 2.8rem/1.2 $font;
+}
+h2,
+.h2 {
+	margin: 0 0 0.6rem;
+	color: inherit;
+	font: $bold 2rem/1.2 $font;
+	+ h3,
+	+ .h3 {
+		margin-top: -0.6rem;
+	}
+}
+h3,
+.h3 {
+	margin: 0 0 0.6rem;
+	color: inherit;
+	font: $bold 1.6rem/1.2 $font;
+	+ h4,
+	+ .h4 {
+		margin-top: -0.6rem;
+	}
+}
+h4,
+.h4 {
+	margin: 0;
+	color: $gray-3;
+	font: $bold 1.5rem/1.2 $font;
+}
+h5,
+.h5 {
+	margin: 0 0 9px;
+	color: inherit;
+	font-family: $font;
+	font-size: 20px;
+	font-size: 1.8rem; // scss-lint:disable DuplicateProperty
+	font-weight: $bold;
+	line-height: lh(18, 24);
+}
+h6,
+.h6 {
+	margin: 0 0 9px;
+	color: inherit;
+	font-family: $font;
+	font-size: 17px;
+	font-size: 1.6rem; // scss-lint:disable DuplicateProperty
+	font-weight: $bold;
+	line-height: lh(16, 22);
+}
+
+
+// @media print,
+// screen and (min-width: 40em) {
+// 	h1,
+// 	.h1 {
+// 		font-size: 3rem;
+// 	}
+// 	h2,
+// 	.h2 {
+// 		font-size: 2.5rem;
+// 	}
+// 	h3,
+// 	.h3 {
+// 		font-size: 1.9375rem;
+// 	}
+// 	h4,
+// 	.h4 {
+// 		font-size: 1.5625rem;
+// 	}
+// 	h5,
+// 	.h5 {
+// 		font-size: 1.25rem;
+// 	}
+// 	h6,
+// 	.h6 {
+// 		font-size: 1rem;
+// 	}
+// }
+
+p {
+	margin: 0 0 1em;
+}
+
+ul,
+ol,
+dl {
+	margin-bottom: 1rem;
+	list-style-position: outside;
+	line-height: 1.6;
+}
+
+li {
+	font-size: inherit;
+}
+
+ul {
+	margin-left: 1.25rem;
+	list-style-type: disc;
+}
+
+ol {
+	margin-left: 1.25rem;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+	margin-left: 1.25rem;
+	margin-bottom: 0;
+}
+
+dl {
+	margin-bottom: 1rem;
+}
+
+dl dt {
+	margin-bottom: 0.3rem;
+	font-weight: bold;
+}
+
+nav ol,
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+figure {
+	margin: 0;
+}
+
+img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	border-style: none;
+	vertical-align: middle;
+	-ms-interpolation-mode: bicubic;
+	a & {
+		border: 0;
+	}
+}
+
+svg {
+	vertical-align: middle;
+	fill: currentColor;
+	&:not(:root) {
+		overflow: hidden;
+	}
+}
+
+hr {
+	clear: both;
+	overflow: visible;
+	max-width: 75rem;
+	height: 0;
+	margin: 1.25rem auto;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 1px solid #cacaca;
+	border-left: 0;
+	box-sizing: content-box;
+}
+
+abbr,
+abbr[title] {
+	border-bottom: 1px dotted #0a0a0a;
+	text-decoration: none;
+	cursor: help;
+}
+
+pre {
+	overflow: auto;
+	margin: 0;
+	padding: 0.6rem;
+	max-height: 400px;
+	font: 1.3rem $mono-font;
+	background-color: $gray-light;
+	border: 1px solid $gray-6;
+}
+
+code {
+	padding: 0;
+	color: $black;
+	font: 1.3rem $mono-font;
+}
+
+kbd {
+	margin: 0;
+	padding: 0.125rem 0.25rem 0;
+	background-color: #e6e6e6;
+	color: #0a0a0a;
+	font-family: $mono-font;
+	font-size: 1em;
+}
+
+dfn {
+	font-style: italic;
+}
+
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+mark {
+	background-color: #ff0;
+	color: #000;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+optgroup {
+	color: inherit;
+	font: inherit;
+}
+
+input {
+	overflow: visible;
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	text-transform: none;
+	touch-action: manipulation;
+}
+
+textarea {
+	overflow: auto;
+	max-width: 100%;
+	margin: 0;
+	color: inherit;
+	font: inherit;
+	text-transform: none;
+	touch-action: manipulation;
+	resize: vertical;
+	&[rows] {
+		height: auto;
+	}
+}
+
+input,
+textarea {
+	&::-webkit-input-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder,
+	&::placeholder {
+		color: $gray-2;
+	}
+	&[readonly] {
+		background-color: $gray-5;
+		box-shadow: none;
+	}
+	&:disabled {
+		background-color: $gray-5;
+		box-shadow: none;
+	}
+}
+
+.input-like,
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 3rem;
+	margin: 0 0 1rem;
+	padding: 0.5rem;
+	border: 1px solid $gray-5;
+	border-radius: 2px;
+	background-color: white;
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+	font-family: inherit;
+	font-size: 1.3rem;
+	font-weight: normal;
+	line-height: 1.5;
+	color: inherit;
+	transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	&:focus {
+		outline: none;
+		border: 1px solid $access-blue-alt;
+		background-color: $form-white;
+		box-shadow: 0 0 0 3px $access-blue;
+		transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+	}
+}
+
+[type="number"] {
+	-moz-appearance:textfield;
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		margin: 0;
+	}
+}
+
+[type='submit'],
+[type='button'] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type='search'] {
+	box-sizing: border-box;
+}
+
+[type='file'],
+[type='checkbox'],
+[type='radio'] {
+	margin: 0 0 1rem;
+}
+
+[type='checkbox'] + label,
+[type='radio'] + label {
+	display: inline-block;
+	vertical-align: baseline;
+	margin-left: 0.5rem;
+	margin-right: 1rem;
+	margin-bottom: 0;
+}
+
+[type='checkbox'] + label[for],
+[type='radio'] + label[for] {
+	cursor: pointer;
+}
+
+[type='file'] {
+	width: 100%;
+}
+
+label {
+	display: block;
+	margin: 0;
+	> [type='checkbox'],
+	> [type='radio'] {
+		margin-right: 0.5rem;
+	}
+}
+
+select {
+	width: 100%;
+	padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+	font: inherit;
+	color: inherit;
+	background: url('/svg/select-handle-off.svg') no-repeat right -1rem center white;
+	background-origin: content-box;
+	background-size: 8px 11px;
+	border: 1px solid $gray-5;
+	border-radius: 2px;
+	text-transform: none;
+	transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+	box-sizing: border-box;
+	touch-action: manipulation;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	&:focus {
+		outline: none;
+		border: 1px solid $access-blue-alt;
+		background-color: $form-white;
+		box-shadow: 0 0 0 3px $access-blue;
+	}
+	&:disabled {
+		background-color: #e6e6e6;
+		cursor: not-allowed;
+	}
+	&::-ms-expand {
+		display: none;
+	}
+	&[multiple] {
+		height: auto;
+		background-image: none;
+	}
+}
+
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	margin: 0;
+	background-color: transparent;
+	color: inherit;
+	font: inherit;
+	text-transform: none;
+	-webkit-appearance: button;
+}
+
+fieldset {
+	padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	color: inherit;
+	white-space: normal;
+	box-sizing: border-box;
+}
+
+summary {
+	display: list-item;
+}
+
+// template {
+// 	display: none;
+// }
+
+[hidden] {
+	display: none;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+
+/* Text-level semantics (https://html.spec.whatwg.org/multipage/semantics.html#text-level-semantics)
+   ========================================================================== */
+
+/*
+ * Remove the text shadow on text selections (opinionated).
+ * 1. Restore the coloring undone by defining the text shadow (opinionated).
+ */
+
+::-moz-selection {
+	background-color: #b3d4fc; /* 1 */
+	color: #000000; /* 1 */
+	text-shadow: none;
+}
+
+::selection {
+	background-color: #b3d4fc; /* 1 */
+	color: #000000; /* 1 */
+	text-shadow: none;
+}
+
+/* Embedded content (https://html.spec.whatwg.org/multipage/embedded-content.html#embedded-content)
+   ========================================================================== */
+
+/*
+ * Change the alignment on media elements in all browers (opinionated).
+ */
+
+audio,
+canvas,
+iframe,
+video {
+	vertical-align: middle;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+	display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+
+/* Forms (https://html.spec.whatwg.org/multipage/forms.html#forms)
+   ========================================================================== */
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+	box-sizing: border-box; /* 1 */
+	color: inherit; /* 2 */
+	display: table; /* 1 */
+	max-width: 100%; /* 1 */
+	padding: 0; /* 3 */
+	white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+	-webkit-appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	font: inherit; /* 2 */
+}
+
+/* User interaction (https://html.spec.whatwg.org/multipage/interaction.html#editing)
+   ========================================================================== */
+
+/*
+ * remove the tapping delay on clickable elements
+ */
+
+a,
+area,
+button,
+label,
+summary,
+[tabindex] {
+	touch-action: manipulation;
+}
+
+/* ARIA (https://w3c.github.io/html-aria/)
+   ========================================================================== */
+
+/**
+ * Change the cursor on busy elements (opinionated).
+ */
+
+[aria-busy="true"] {
+	cursor: progress;
+}
+
+/*
+ * Change the cursor on control elements (opinionated).
+ */
+
+[aria-controls] {
+	cursor: pointer;
+}
+
+/*
+ * Change the display on visually hidden accessible elements (opinionated).
+ */
+
+[aria-hidden="false"][hidden]:not(:focus) {
+	clip: rect(0, 0, 0, 0);
+	display: inherit;
+	position: absolute;
+}
+
+/*
+ * Change the cursor on disabled, not-editable, or otherwise
+ * inoperable elements (opinionated).
+ */
+
+[aria-disabled] {
+	cursor: default;
+}

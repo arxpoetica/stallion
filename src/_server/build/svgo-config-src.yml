@@ -1,0 +1,62 @@
+# SEE: https://raw.githubusercontent.com/svg/svgo/master/.svgo.yml
+
+# multipass: true
+# full: true
+
+plugins:
+  # - addAttributesToSVGElement: false # default
+  - addClassesToSVGElement:
+      className: 'svg-src'
+  # - cleanupAttrs: true # default
+  # - cleanupEnableBackground: true # default
+  # - cleanupIDs: true # default
+  # - cleanupListOfValues: false # default
+  # - cleanupNumericValues: true # default
+  # - collapseGroups: true # default
+  # - convertColors: true # default
+  # - convertPathData: true # default
+  # - convertShapeToPath: true # default
+  # - convertStyleToAttrs: true # default
+  # - convertTransform: true # default
+  # - inlineStyles: true # default
+  # - mergePaths: true # default
+  # - minifyStyles: true # default
+  # - moveElemsAttrsToGroup: true # default
+  # - moveGroupAttrsToElems: true # default
+  # - prefixIds: false # default
+  # - removeAttrs: false # default
+  # - removeAttrs:
+  #     attrs:
+  #       - 'stroke'
+  #       - 'fill'
+  #       - 'fill-rule'
+  # - removeComments: true # default
+  # - removeDesc: true # default
+  # - removeDimensions: false # default
+  # - removeDoctype: true # default
+  # - removeEditorsNSData: true # default
+  # - removeElementsByAttr: false # default
+  # - removeEmptyAttrs: true # default
+  # - removeEmptyContainers: true # default
+  # - removeEmptyText: true # default
+  # - removeHiddenElems: true # default
+  # - removeMetadata: true # default
+  # - removeNonInheritableGroupAttrs: true # default
+  - removeRasterImages: true
+  - removeScriptElement: true
+  - removeStyleElement: true
+  # - removeTitle: true # default
+  # - removeUnknownsAndDefaults: true # default
+  # - removeUnusedNS: true # default
+  # - removeUselessDefs: true # default
+  # - removeUselessStrokeAndFill: true # default
+  # - removeViewBox: true # default
+  # - removeXMLNS: false # default
+  # - removeXMLProcInst: true # default
+  # - sortAttrs: false # default
+
+# configure the indent (default 4 spaces) used by `--pretty` here:
+js2svg:
+  pretty: true
+  indent: '	'
+# @see https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options

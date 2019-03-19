@@ -1,0 +1,4 @@
+type Query {
+	# FIXME: this shouldn't be here:
+	dataset(id: String!): String
+}

@@ -1,0 +1,29 @@
+/** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * `.ghost` helper to visually hide elements on the page
+ * mostly used for accessibility purposes
+*** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.ghost {
+	// https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+	overflow: hidden;
+	// scss-lint:disable ImportantRule
+	position: absolute !important;
+	// scss-lint:enable ImportantRule
+	width: 1px;
+	height: 1px;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(0 100% 100% 0);
+}
+
+.visibility-hidden {
+	visibility: hidden;
+}
+
+/** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ * Helper to group JS for ease of development
+ * @helper: .hidden-js
+*** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+.hidden-js {
+	visibility: hidden;
+}

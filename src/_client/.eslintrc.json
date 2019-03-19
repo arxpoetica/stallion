@@ -1,0 +1,13 @@
+{
+	"extends": "../../.eslintrc.yml",
+	"env": {
+		"browser": true,
+		"node": false
+	},
+	"rules": {
+		"no-console": "error"
+	},
+	"globals": {
+		"process": true
+	}
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>valid-good</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z M8,14.4761905 C11.5767012,14.4761905 14.4761905,11.5767012 14.4761905,8 C14.4761905,4.42329876 11.5767012,1.52380952 8,1.52380952 C4.42329876,1.52380952 1.52380952,4.42329876 1.52380952,8 C1.52380952,11.5767012 4.42329876,14.4761905 8,14.4761905 Z M4.38191535,7.74348341 L6.47058338,9.83215143 L11.8042496,4.49848517 L12.9480698,5.64230528 L6.34840647,12.2419686 L3.11591833,9.00948043 L4.38191535,7.74348341 Z" id="valid-good" fill="#98EB26" fill-rule="nonzero"></path>
+    </g>
+</svg>
