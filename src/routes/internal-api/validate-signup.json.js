@@ -1,4 +1,4 @@
-import { emailRegex } from '../../_server/data/validators/generic'
+import { emailRegex } from '../../_server/db/validators/generic'
 import { getApi } from '../../_server/db/arangodb-api'
 const api = getApi()
 

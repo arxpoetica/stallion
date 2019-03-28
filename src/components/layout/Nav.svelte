@@ -1,29 +1,19 @@
 <nav class="{$session.user ? '' : 'no-auth'}">
 	<ul>
-		<li class="link" data-on="{segment === 'profiles'}"><a href="/profiles" rel=prefetch>Profiles</a></li>
 		{#if $session.user}
-			<li class="link" data-on="{segment === 'editor'}"><a href="/editor" rel=prefetch>Editor</a></li>
-			<!-- <li class="action link"><a href="/new">New</a></li> -->
-
 			<NavMenu {segment}/>
-
 			<li class="action link logout"><a href="/auth/logout" on:click={logout}>Log Out</a></li>
 		{:else}
-			<li class="link" data-on="{segment.startsWith('blog')}"><a href="blog" rel=prefetch>Blog</a></li>
 			<li class="link login"><a href="/login">Log In</a></li>
-			<!-- <li class="link signup"><a href="/signup/email">Sign Up</a></li> -->
 		{/if}
 	</ul>
 </nav>
 
 <script>
 	export let segment
-
+	import NavMenu from './NavMenu.svelte'
 	import { getSession } from '@sapper/app'
 	const session = getSession()
-
-	import NavMenu from './NavMenu.svelte'
-
 	async function logout(event) {
 		event.preventDefault()
 		await fetch('auth/logout', { method: 'POST' })
