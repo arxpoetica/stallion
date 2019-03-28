@@ -95,20 +95,24 @@ export const getApi = name => {
 
 		// find a document by key & value
 		find: async function(collection, filters) {
-			if (!collection) { throw new Error('No collection set in `find`') }
-			if (!filters) { throw new Error('No filters set in `find`') }
-			let query = `FOR document IN \`${collection}\``
-			for (let key in filters) {
-				const value = filters[key]
-				if (typeof value === 'string') {
-					query += ` FILTER document.${key} == "${value}"`
-				} else {
-					query += ` FILTER document.${key} == ${value}`
+			try {
+				if (!collection) { throw new Error('No collection set in `find`') }
+				if (!filters) { throw new Error('No filters set in `find`') }
+				let query = `FOR document IN \`${collection}\``
+				for (let key in filters) {
+					const value = filters[key]
+					if (typeof value === 'string') {
+						query += ` FILTER document.${key} == "${value}"`
+					} else {
+						query += ` FILTER document.${key} == ${value}`
+					}
 				}
+				query += ' RETURN document'
+				const cursor = await db.query(query)
+				return cursor.next()
+			} catch (error) {
+				return { error: true, message: error.message ? error.message : 'Unknown error' }
 			}
-			query += ' RETURN document'
-			const cursor = await db.query(query)
-			return cursor.next()
 		},
 
 	}

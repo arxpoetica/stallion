@@ -22,7 +22,7 @@ export const graphqlFormat = data => {
 	return `{ ${props.join(',')} }`
 }
 
-export const get = async function(url) {
+export const GET = async function(url) {
 	const res = await fetch(url, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },
@@ -31,7 +31,7 @@ export const get = async function(url) {
 	try { return await res.json() } catch (error) { return undefined }
 }
 
-export const post = async function(url, body) {
+export const POST = async function(url, body) {
 	body = body || {}
 	const res = await fetch(url, {
 		method: 'POST',
