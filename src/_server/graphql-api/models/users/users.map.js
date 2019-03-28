@@ -5,12 +5,20 @@ const api = getApi()
 export default {
 	Query: {
 		users: async function() {
-			const users = await api.getAll('users')
-			return users.map(user => mappers.user(user))
+			try {
+				const users = await api.getAll('users')
+				return users.map(user => mappers.user(user))
+			} catch (error) {
+				return []
+			}
 		},
 		user: async function(_, { username }) {
-			const user = await api.get('users', username)
-			return mappers.user(user)
+			try {
+				const user = await api.get('users', username)
+				return mappers.user(user)
+			} catch (error) {
+				return {}
+			}
 		},
 	},
 	// Mutation: {
