@@ -71,7 +71,7 @@
 			usernameValid = 'inert'
 			usernameMessage = ''
 			validate(async() => {
-				const res = await POST('/internal-api/validate-signup.json', {
+				const res = await POST('/internal-api/signup-validate.json', {
 					type: 'username',
 					filters: { _key: username },
 				})
@@ -91,7 +91,7 @@
 		emailValid = 'inert'
 		emailMessage = ''
 		validate(async() => {
-			const res = await POST('/internal-api/validate-signup.json', {
+			const res = await POST('/internal-api/signup-validate.json', {
 				type: 'email',
 				filters: { email },
 			})
@@ -114,7 +114,7 @@
 	async function signup(event) {
 		event.preventDefault()
 		if (submittable) {
-			const res = await POST('/auth/signup', { username, email, password })
+			const res = await POST('/internal-api/signup.json', { username, email, password })
 			if (res.error) {
 				console.group('error!')
 				console.log(res.error)

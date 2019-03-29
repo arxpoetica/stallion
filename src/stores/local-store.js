@@ -14,7 +14,7 @@ const storage = typeof localStorage !== 'undefined' ? localStorage : {
  */
 
 export const storable = (key, value, fn) => {
-	key = `cm.store.${key}`
+	key = `stallion.store.${key}`
 	if (storage[key]) { value = JSON.parse(storage[key]) }
 
 	const store = writable(value, fn)

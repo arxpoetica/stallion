@@ -1,5 +1,5 @@
-import { emailRegex } from '../../_server/db/validators/generic'
-import { getApi } from '../../_server/db/arangodb-api'
+import { emailRegex } from '../../_server/db/validators/generic.js'
+import { getApi } from '../../_server/db/arangodb-api.js'
 const api = getApi()
 
 export async function post(req, res) {

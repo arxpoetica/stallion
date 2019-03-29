@@ -20,6 +20,7 @@ export async function appSetup(app) {
 			if (req.originalUrl.indexOf('/client/') === 0 || req.originalUrl === '/setup') {
 				return next()
 			}
+			// server = res.connection.server
 			res.redirect('/setup')
 		})
 	} else {
