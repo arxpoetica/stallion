@@ -36,6 +36,7 @@
     "body-parser": "1.18.3",
     "compression": "1.7.4",
     "cookie-parser": "1.4.4",
+    "cross-fetch": "3.0.2",
     "esm": "3.2.18",
     "express": "4.16.4",
     "express-graphql": "0.7.1",
