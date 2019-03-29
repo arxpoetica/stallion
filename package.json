@@ -30,10 +30,10 @@
     "m:test:down": "node -r esm src/_server/utils/migration-shell"
   },
   "dependencies": {
+    "ansi-colors": "3.2.4",
     "arangojs": "6.10.0",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.3",
-    "colors": "1.3.3",
     "compression": "1.7.4",
     "cookie-parser": "1.4.4",
     "esm": "3.2.18",

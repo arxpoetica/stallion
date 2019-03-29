@@ -1,6 +1,6 @@
 // FIXME: config should work
 // import config from './_server/build/config'
-import 'colors'
+import { white, green } from 'ansi-colors'
 import express from 'express'
 import morgan from 'morgan'
 import helmet from 'helmet'
@@ -8,6 +8,7 @@ import compression from 'compression'
 import sirv from 'sirv'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import { appSetup } from './_server/services/app-setup.js'
 import { authSetup } from './_server/services/auth-setup.js'
 import { graphqlSetup } from './_server/services/graphql-setup.js'
 import { validate } from './routes/_services/auth-check.js'
@@ -48,6 +49,7 @@ async function start() {
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(cookieParser())
 
+	await appSetup(app)
 	await authSetup(app)
 	await graphqlSetup(app)
 
@@ -73,10 +75,10 @@ async function start() {
 		console.log()
 		console.log('     ~~~   Stallion   ~~~   Headless CMS built atop Svelte and Sapper.')
 		console.log()
-		console.log('     listening on port '.green + PORT + ' in '.green + NODE_ENV + ' mode'.green)
+		console.log(green(`     listening on port ${white(PORT)} in ${white(NODE_ENV)} mode`))
 		// console.log(JSON.stringify(process.env, null, 2))
 		if (development) {
-			console.log('     Running '.green + `http://localhost:${(PORT)}/graphiql` + ' in development mode only...'.green)
+			console.log(green(`     Running ${white(`http://localhost:${PORT}/graphiql`)} in development mode only...`))
 		}
 		console.log()
 	}, 100))

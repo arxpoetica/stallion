@@ -114,7 +114,7 @@
 	async function signup(event) {
 		event.preventDefault()
 		if (submittable) {
-			const res = await POST('auth/signup', { username, email, password })
+			const res = await POST('/auth/signup', { username, email, password })
 			if (res.error) {
 				console.group('error!')
 				console.log(res.error)

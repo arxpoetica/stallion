@@ -14,6 +14,12 @@ const prod = process.env.NODE_ENV === 'production'
 
 export async function authSetup(app) {
 
+	// FIXME: move this into routes!!!
+	// FIXME: move this into routes!!!
+	// FIXME: move this into AND SERVER!!!
+	// FIXME: move this into routes!!!
+	// FIXME: move this into routes!!!
+
 	// SEE: https://medium.com/front-end-hacking/learn-using-jwt-with-passport-authentication-9761539c4314
 	// AND: https://scotch.io/@devGson/api-authentication-with-json-web-tokensjwt-and-passport
 	// AND: https://blog.usejournal.com/sessionless-authentication-withe-jwts-with-node-express-passport-js-69b059e4b22c
