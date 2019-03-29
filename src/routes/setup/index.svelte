@@ -1,50 +1,43 @@
-<div class="setup">
-	<h1>Setup</h1>
-	<p>Let's set up your Stallion headless CMS.</p>
+<Form title="Setup" subtitle="Let's set up your Stallion headless CMS.">
+	<h2>Pick a username, email, and password</h2>
+	<label data-valid={usernameValid}>
+		<span class="ghost">Pick a username</span>
+		<input bind:this={usernameInput} bind:value={username} type="text" name="username" placeholder="Pick a username" required="required">
+		{#if usernameValid === false}
+			<div class="popup"><Popup valid={false} message={usernameMessage}/></div>
+		{/if}
+	</label>
+	<label data-valid={emailValid}>
+		<span class="ghost">Email address</span>
+		<input bind:value={email} type="email" name="email" placeholder="Email Address" required="required">
+		{#if emailValid === false}
+			<div class="popup"><Popup valid={false} message={emailMessage}/></div>
+		{/if}
+	</label>
+	<label data-valid={passwordValid}>
+		<span class="ghost">Create a password</span>
+		<input bind:value={password} type="password" name="password" placeholder="Create a password" required="required">
+		{#if passwordValid === false}
+			<div class="popup"><Popup valid={false} message={passwordMessage}/></div>
+		{/if}
+	</label>
+	<button slot="post" class="button primary {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
+</Form>
 
-	<form on:submit={signup}>
-		<div class="border">
-			<h2>Pick a username, email, and password</h2>
-			<label data-valid={usernameValid}>
-				<span class="ghost">Pick a username</span>
-				<input bind:this={usernameInput} bind:value={username} type="text" name="username" placeholder="Pick a username" required="required">
-				{#if usernameValid === false}
-					<div class="popup"><Popup valid={false} message={usernameMessage}/></div>
-				{/if}
-			</label>
-			<label data-valid={emailValid}>
-				<span class="ghost">Email address</span>
-				<input bind:value={email} type="email" name="email" placeholder="Email Address" required="required">
-				{#if emailValid === false}
-					<div class="popup"><Popup valid={false} message={emailMessage}/></div>
-				{/if}
-			</label>
-			<label data-valid={passwordValid}>
-				<span class="ghost">Create a password</span>
-				<input bind:value={password} type="password" name="password" placeholder="Create a password" required="required">
-				{#if passwordValid === false}
-					<div class="popup"><Popup valid={false} message={passwordMessage}/></div>
-				{/if}
-			</label>
-		</div>
-		<button class="button primary {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
-	</form>
-
-	<!-- <div class="divider"></div> -->
-	<!-- <h3>
-		Already have a DataSynq account?&nbsp;&nbsp;
-		<a href="/login">Log In</a>
-	</h3> -->
-</div>
+{#if reload}
+	<ReloadBlock/>
+{/if}
 
 <script>
 	import debounce from 'just-debounce-it'
 	const validate = debounce(cb => cb(), 500)
 
-	import { onMount } from 'svelte'
+	import { onMount, setContext } from 'svelte'
 	import { GET, POST } from '../_services/loaders.js'
 	import { usernameRegex } from '../../_server/db/validators/generic.js'
-	import Popup from './_popup.html'
+	import Form from '../../components/forms/Form.svelte'
+	import Popup from '../../components/forms/Popup.svelte'
+	import ReloadBlock from '../../components/shared/ReloadBlock.svelte'
 
 	// ------------------- >>>>> username
 	let username = ''
@@ -112,30 +105,30 @@
 	let usernameInput
 	onMount(() => setTimeout(() => usernameInput.focus(), 0))
 
-	async function signup(event) {
-		event.preventDefault()
-		if (submittable) {
-			const res = await POST('/internal-api/signup.json', { username, email, password })
-			if (res.error) {
-				console.group('error!')
-				console.log(res.error)
-				console.groupEnd()
-				// FIXME: handle the error!!!!
-				// FIXME: handle the error!!!!
-				// FIXME: handle the error!!!!
-			} else {
-				// const res = await GET('/internal-api/restart.json')
-				window.location.reload(true)
+	let reload = false
+	setContext('form.signup', {
+		signup: async (event) => {
+			event.preventDefault()
+			if (submittable) {
+				const res = await POST('/internal-api/signup.json', { username, email, password })
+				if (res.error) {
+					console.group('error!')
+					console.log(res.error)
+					console.groupEnd()
+					// FIXME: handle the error!!!!
+					// FIXME: handle the error!!!!
+					// FIXME: handle the error!!!!
+				} else {
+					// const res = await GET('/internal-api/restart.json')
+					// window.location.reload(true)
+					reload = true
+				}
 			}
 		}
-	}
+	})
 </script>
 
 <style type="text/scss">
-	.setup {
-		max-width: 400px;
-		margin: 0 auto;
-	}
 	.divider {
 		display: flex;
 		justify-content: center;
@@ -150,17 +143,17 @@
 	// 	text-align: center;
 	// }
 
-	.border {
-		margin: 0 0 12px;
-		padding: 12px;
-		border: 1px solid $gray-5;
-		border-radius: 2px;
-		:last-child {
-			input[type="password"] {
-				margin-bottom: 0;
-			}
-		}
-	}
+	// .border {
+	// 	margin: 0 0 12px;
+	// 	padding: 12px;
+	// 	border: 1px solid $gray-5;
+	// 	border-radius: 2px;
+	// 	:last-child {
+	// 		input[type="password"] {
+	// 			margin-bottom: 0;
+	// 		}
+	// 	}
+	// }
 	h2 {
 		margin: 0 0 1.2rem;
 		font: $bold 1.6rem/1.2 $font;
