@@ -8,8 +8,7 @@
 
 <script>
 	import { getSession } from '@sapper/app'
-	const session = getSession()
-
 	import Private from './_home-private.svelte'
 	import Public from './_home-public.svelte'
+	const session = getSession()
 </script>

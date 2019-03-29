@@ -46,12 +46,12 @@
 				background-color: $yellow-light;
 			}
 		}
-		&[data-on=true] a {
-			background-color: $yellow-light;
-			color: $black;
-			font-weight: $bold;
-			cursor: default;
-		}
+		// &[data-on=true] a {
+		// 	background-color: $yellow-light;
+		// 	color: $black;
+		// 	font-weight: $bold;
+		// 	cursor: default;
+		// }
 		&.action a {
 			background-color: $yellow-main;
 			color: black;

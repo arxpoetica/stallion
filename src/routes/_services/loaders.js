@@ -1,7 +1,9 @@
-export const graphQuery = async function(fetch, query, convertRawKeys) {
+import fetch from 'cross-fetch'
+
+export const graphQuery = async function(query, convertRawKeys) {
 	convertRawKeys = convertRawKeys ? convertRawKeys : []
 	convertRawKeys = Array.isArray(convertRawKeys) ? convertRawKeys : [convertRawKeys]
-	const res = await fetch('/api/pure-graphql', {
+	const res = await fetch(`${process.env.STALLION_HOST}/api/pure-graphql`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		credentials: 'same-origin',
@@ -22,8 +24,8 @@ export const graphqlFormat = data => {
 	return `{ ${props.join(',')} }`
 }
 
-export const get = async function(url) {
-	const res = await fetch(url, {
+export const GET = async function(url) {
+	const res = await fetch(process.env.STALLION_HOST + url, {
 		method: 'GET',
 		headers: { 'Content-Type': 'application/json' },
 		credentials: 'same-origin',
@@ -31,9 +33,9 @@ export const get = async function(url) {
 	try { return await res.json() } catch (error) { return undefined }
 }
 
-export const post = async function(url, body) {
+export const POST = async function(url, body) {
 	body = body || {}
-	const res = await fetch(url, {
+	const res = await fetch(process.env.STALLION_HOST + url, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		credentials: 'same-origin',

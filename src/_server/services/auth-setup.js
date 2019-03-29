@@ -4,8 +4,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import { Strategy as LocalStrategy } from 'passport-local'
 // import { Strategy as GitHubStrategy } from 'passport-github'
-import { getApi } from '../db/arangodb-api'
-const api = getApi()
 import { driver } from '../db/arangodb-driver'
 const db = driver.connect()
 
@@ -13,6 +11,12 @@ const Users = db.collection('users')
 const prod = process.env.NODE_ENV === 'production'
 
 export async function authSetup(app) {
+
+	// FIXME: move this into routes!!!
+	// FIXME: move this into routes!!!
+	// FIXME: move this into AND SERVER!!!
+	// FIXME: move this into routes!!!
+	// FIXME: move this into routes!!!
 
 	// SEE: https://medium.com/front-end-hacking/learn-using-jwt-with-passport-authentication-9761539c4314
 	// AND: https://scotch.io/@devGson/api-authentication-with-json-web-tokensjwt-and-passport
@@ -50,52 +54,6 @@ export async function authSetup(app) {
 
 	app.use(passport.initialize())
 
-	app.post('/auth/signup', async(req, res, next) => {
-		try {
-			const { username, email, password } = req.body
-
-			// FIXME: perform *** ALL *** validation tasks
-			const keyExists = await api.get('users', username)
-			const emailExists = await api.find('users', { email })
-
-			if (keyExists || emailExists) {
-				res.end(JSON.stringify({ keyExists: !!keyExists, emailExists: !!emailExists }))
-			}
-
-			const user = await api.set('users', {
-				_key: username,
-				created: Date.now(),
-				modified: Date.now(),
-				email,
-				// bio: '',
-				avatar: `/img/no-avatar-${Math.floor(Math.random() * 6) + 1}.png`,
-				displayName: username,
-				// first: '',
-				// last: '',
-				hash: await bcrypt.hash(password, 10),
-				plan: 'free', // for now
-			})
-
-			user.username = user._key
-			delete user._id
-			delete user._key
-			delete user._rev
-			delete user.hash
-
-			// generate a signed son web token with the contents of user object and return it in the response
-			const month = 60 * 60 * 24 * 30
-			const token = jwt.sign(user, config.STALLION_JWT_SECRET, { expiresIn: month })
-			res.cookie('cm', token, {
-				httpOnly: prod,
-				secure: prod,
-				maxAge: 1000 * month,
-			})
-			res.status(200).send({ user })
-		} catch (error) {
-			res.status(400).send({ error: 'req body should take the form { username, password }' })
-		}
-	})
-
 	app.post('/auth/local/login', (req, res) => {
 		passport.authenticate('local', { session: false, successRedirect: '/', failureRedirect: '/login' }, (err, user, results) => {
 			if (err || !user) {
@@ -113,7 +71,7 @@ export async function authSetup(app) {
 				// generate a signed son web token with the contents of user object and return it in the response
 				const month = 60 * 60 * 24 * 30
 				const token = jwt.sign(user, config.STALLION_JWT_SECRET, { expiresIn: month })
-				return res.cookie('cm', token, {
+				return res.cookie('stallion', token, {
 					httpOnly: prod,
 					secure: prod,
 					maxAge: 1000 * month,
@@ -123,7 +81,7 @@ export async function authSetup(app) {
 	})
 
 	app.post('/auth/logout', (req, res) => {
-		res.clearCookie('cm')
+		res.clearCookie('stallion')
 		req.logout()
 		res.end('ok')
 	})

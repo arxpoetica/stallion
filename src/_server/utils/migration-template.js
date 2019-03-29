@@ -1,4 +1,4 @@
-import { log } from '../../utils/migration-tools'
+import { log } from '../../utils/db-tools.js'
 // import { getApi } from '../../db/arangodb-api.js'
 // const api = getApi()
 import { driver } from '../../db/arangodb-driver'
