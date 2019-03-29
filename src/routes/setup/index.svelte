@@ -42,7 +42,7 @@
 	const validate = debounce(cb => cb(), 500)
 
 	import { onMount } from 'svelte'
-	import { POST } from '../_services/loaders.js'
+	import { GET, POST } from '../_services/loaders.js'
 	import { usernameRegex } from '../../_server/db/validators/generic.js'
 	import Popup from './_popup.html'
 
@@ -105,6 +105,7 @@
 	$: passwordValid = password.length < 1 ? 'inert' : password.length >= 8
 	$: passwordMessage = passwordValid ? '' : 'Password must be 8 or more characters.'
 
+	let submittable
 	$: submittable = usernameValid === true && emailValid === true && passwordValid === true
 
 	// for some reason, it's not ready until clearing the stack
@@ -123,6 +124,7 @@
 				// FIXME: handle the error!!!!
 				// FIXME: handle the error!!!!
 			} else {
+				// const res = await GET('/internal-api/restart.json')
 				window.location.reload(true)
 			}
 		}

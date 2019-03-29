@@ -17,7 +17,11 @@ export async function appSetup(app) {
 	const cursor = await Users.all()
 	if (cursor.count === 0) {
 		app.get('*', (req, res, next) => {
-			if (req.originalUrl.indexOf('/client/') === 0 || req.originalUrl === '/setup') {
+			if (
+				req.originalUrl.indexOf('/client/') === 0 ||
+				req.originalUrl.indexOf('/internal-api/') === 0 ||
+				req.originalUrl === '/setup'
+			) {
 				return next()
 			}
 			// server = res.connection.server
