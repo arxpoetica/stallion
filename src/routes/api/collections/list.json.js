@@ -1,4 +1,3 @@
-// import { log } from '../../../_server/utils/db-tools.js'
 import { driver } from '../../../_server/db/arangodb-driver.js'
 const db = driver.connect()
 
