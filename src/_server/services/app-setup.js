@@ -10,7 +10,6 @@ export async function appSetup(app) {
 	const exists = await Users.exists()
 	if (!exists) {
 		log(await Users.create(), 'Creating `Users` collection')
-		console.log()
 	}
 
 	// check if app needs to be initialized / setup

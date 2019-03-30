@@ -7,8 +7,7 @@
 			<slot></slot>
 		</div>
 		<slot name="actions">
-			<button class="btn" type="submit">Save</button>
-			<button class="btn" type="submit">Cancel</button>
+			<button class="btn" type="submit">Submit</button>
 		</slot>
 	</form>
 </div>

@@ -3,12 +3,12 @@
 <Form {message}>
 	<label>
 		Name
-		<input bind:this={nameInput} type="text" name="name" placeholder="" required="required">
-		<div class="help">Collection names should be singular, not plural.</div>
+		<input bind:this={nameInput} bind:value={name} type="text" required="required">
+		<div class="help">Collection names should be plural.</div>
 	</label>
 	<label>
 		Description
-		<textarea></textarea>
+		<textarea bind:value={description}></textarea>
 	</label>
 	<!-- <button slot="post" type="submit" class="btn">Log In</button> -->
 </Form>
@@ -21,17 +21,24 @@
 	import Form from '../../components/forms/Form.svelte'
 
 	let message
-	let name
-	let description
+	let name = ''
+	let description = ''
 
 	// for some reason, it's not ready until clearing the stack
 	let nameInput
 	onMount(() => setTimeout(() => nameInput.focus(), 0))
 
+	import { POST } from '../../_server/utils/loaders.js'
+	import { collections } from '../../stores/app-store.js'
 	setContext('form.submit', {
 		submit: async (event) => {
 			event.preventDefault()
-			console.log('submitting!')
+			const collection = await POST('/api/collections/create.json', { name, description })
+			collections.update(arr => {
+				// TODO: SORT IT!
+				arr.push(collection)
+				return arr
+			})
 		}
 	})
 </script>

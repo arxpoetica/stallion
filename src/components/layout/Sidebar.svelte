@@ -1,15 +1,15 @@
 <div class="sidebar">
 	<nav class="menu">
 		<h2>
-			Collections
-			<a href="/collection/create">Create +</a>
+			<a href="/collections">Collections</a>
+			<a href="/collections/create">Create +</a>
 		</h2>
-		{#each collections as collection}
-			<!-- <a href="/collection/{collection.name}" data-on="{section === 'users'}">Users</a> -->
-			<a href="/collection/{collection.name}">{collection.name}</a>
+		{#each $collections as collection}
+			<!-- <a href="/collections/{collection.name}" data-on="{section === 'users'}">Users</a> -->
+			<a class="link" href="/collections/{collection.name}">{collection.name}</a>
 		{/each}
 		<h2>Settings</h2>
-		<a href="/settings/account/profile" data-on="{section === 'profile'}">Profile</a>
+		<a class="link" href="/settings/account/profile" data-on="{section === 'profile'}">Profile</a>
 	</nav>
 </div>
 
@@ -22,8 +22,12 @@
 	export let segment
 
 	import { GET } from '../../_server/utils/loaders.js'
-	let collections = []
-	onMount(async () => collections = await GET('/api/collections/list.json'))
+	import { collections } from '../../stores/app-store.js'
+	onMount(async () => {
+		const list = await GET('/api/collections/list.json')
+		list.sort((a, b) => a.name.localeCompare(b.name))
+		collections.set(list)
+	})
 </script>
 
 <style type="text/scss">
@@ -50,7 +54,7 @@
 		font: $bold 1.3rem/1 $font;
 		cursor: default;
 	}
-	a {
+	.link {
 		display: block;
 		padding: 1rem 1.2rem;
 		border-bottom: 1px solid $gray-6;
