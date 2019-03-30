@@ -36,13 +36,5 @@
 	}
 	.fieldset {
 		margin: 0 0 12px;
-		padding: 12px;
-		border: 1px solid $gray-5;
-		border-radius: 2px;
-		// :last-child {
-		// 	input[type="password"] {
-		// 		margin-bottom: 0;
-		// 	}
-		// }
 	}
 </style>

@@ -39,7 +39,7 @@ article, aside, footer, header, nav, section, figcaption, figure, main, details,
 
 a {
 	background-color: transparent;
-	color: #8c02b3;
+	color: #368457;
 	line-height: inherit;
 	text-decoration: none;
 	cursor: pointer;
@@ -626,10 +626,10 @@ a, area, button, label, summary, [tabindex] {
 	justify-content: center;
 	margin: 0 0 1rem;
 	padding: 0.8rem 1.6rem;
-	background-color: #a5cd94;
+	background-color: #529d71;
 	border: 1px solid transparent;
 	border-radius: 1px;
-	color: #1e3d43;
+	color: white;
 	font: 600 1.4rem/1 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-align: center;
 	transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
@@ -638,7 +638,7 @@ a, area, button, label, summary, [tabindex] {
 }
 
 .btn:hover, .btn:focus {
-		background-color: #8cbf77;
+		background-color: #67b387;
 	}
 
 .btn .icon {
@@ -683,31 +683,31 @@ a, area, button, label, summary, [tabindex] {
 
 .btn.outline {
 		background-color: transparent;
-		border: 3px solid #fbc90d;
+		border: 3px solid #e5b737;
 		color: #1e3d43;
 	}
 
 .btn.outline:hover, .btn.outline:focus {
-			background-color: #fbc90d;
+			background-color: #e5b737;
 		}
 
 .btn.primary {
-		background-color: #fbc90d;
+		background-color: #e5b737;
 		color: #1e3d43;
 	}
 
 .btn.primary:hover, .btn.primary:focus {
-			background-color: #edc11a;
+			background-color: #ba8e15;
 			color: #1e3d43;
 		}
 
 .btn.secondary {
-		background-color: #fbc90d;
+		background-color: #e5b737;
 		color: #1e3d43;
 	}
 
 .btn.secondary:hover, .btn.secondary:focus {
-			background-color: #edc11a;
+			background-color: #ba8e15;
 			color: #1e3d43;
 		}
 
@@ -727,22 +727,22 @@ a, area, button, label, summary, [tabindex] {
 		}
 
 .btn.warning {
-		background-color: #f4994e;
+		background-color: #ff9e63;
 		color: #1e3d43;
 	}
 
 .btn.warning:hover, .btn.warning:focus {
-			background-color: #e06400;
+			background-color: #d75100;
 			color: white;
 		}
 
 .btn.alert {
-		background-color: #f3337b;
+		background-color: #c93e37;
 		color: #fefefe;
 	}
 
 .btn.alert:hover, .btn.alert:focus {
-			background-color: #f36c9f;
+			background-color: #f87d77;
 			color: #fefefe;
 		}
 
@@ -772,7 +772,7 @@ a, area, button, label, summary, [tabindex] {
 }
 
 .btn.disabled.primary, .btn.disabled.primary:hover, .btn.disabled.primary:focus, .btn[disabled].primary, .btn[disabled].primary:hover, .btn[disabled].primary:focus {
-	background-color: #fbc90d;
+	background-color: #e5b737;
 	color: #1e3d43;
 }
 
@@ -782,7 +782,7 @@ a, area, button, label, summary, [tabindex] {
 }
 
 .btn.disabled.secondary, .btn.disabled.secondary:hover, .btn.disabled.secondary:focus, .btn[disabled].secondary, .btn[disabled].secondary:hover, .btn[disabled].secondary:focus {
-	background-color: #fbc90d;
+	background-color: #e5b737;
 	color: #1e3d43;
 }
 

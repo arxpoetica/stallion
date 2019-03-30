@@ -88,12 +88,12 @@
 		text-decoration: none;
 		// &:nth-child(4n + 1) { background-color: $red-main; }
 		// &:nth-child(4n + 2) { background-color: $yellow-main; color: $black; }
-		// &:nth-child(4n + 3) { background-color: $teal-main; }
+		// &:nth-child(4n + 3) { background-color: $blue-main; }
 		// &:nth-child(4n + 4) { background-color: $orange-main; }
 		// &:nth-child(4n + 5) { background-color: $green-main; }
 		&.color-1 { background-color: $red-main; }
 		&.color-2 { background-color: $yellow-main; color: $black; }
-		&.color-3 { background-color: $teal-main; }
+		&.color-3 { background-color: $blue-main; }
 		&.color-4 { background-color: $orange-main; }
 		&.color-5 { background-color: $green-main; }
 	}
