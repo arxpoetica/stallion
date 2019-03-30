@@ -35,13 +35,12 @@
 </script>
 
 <style type="text/scss">
-	$menu-width: 22.0rem;
 	.settings {
 		display: flex;
 	}
 	.side {
 		position: relative;
-		flex: 0 0 $menu-width;
+		flex: 0 0 $sidebar-width;
 		margin: 0 2rem 0 0;
 	}
 	.content {
@@ -50,7 +49,7 @@
 	}
 	.menu {
 		position: fixed;
-		width: $menu-width;
+		width: $sidebar-width;
 		font: 1.4rem/1 $font;
 		background-color: white;
 		border: 1px solid $gray-6;
