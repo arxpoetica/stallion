@@ -2,7 +2,7 @@
 	<Header segment={segment || 'home'}/>
 	<main class={$session.user ? 'private' : 'public'}>
 		{#if $session.user}
-			<Sidebar/>
+			<Sidebar {section} segment={segment || 'home'}/>
 			<div class="content">
 				<slot></slot>
 			</div>

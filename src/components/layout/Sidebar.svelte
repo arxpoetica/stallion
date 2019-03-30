@@ -1,19 +1,33 @@
 <div class="side">
 	<nav class="menu">
-		<!-- {#if $session.user && $session.user.plan === 'admin'}
-			<h2>Admin</h2>
-			<a href="settings/admin/users" data-on="{section === 'users'}">Users</a>
-			{#if $session.env === 'development'}
-				<a href="settings/admin/collections" data-on="{section === 'collections'}">Collections</a>
-			{/if}
-		{/if} -->
+		<h2>Collections</h2>
+		{#each collections as collection}
+			<!-- <a href="/collection/{collection.name}" data-on="{section === 'users'}">Users</a> -->
+			<a href="/collection/{collection.name}">{collection.name}</a>
+		{/each}
 		<h2>Settings</h2>
-		<!-- <a href="settings/account/profile" data-on="{section === 'profile'}">Profile</a> -->
-		<!-- <a href="settings/account/notifications" data-on="{section === 'notifications'}">Notifications</a> -->
+		<a href="/settings/account/profile" data-on="{section === 'profile'}">Profile</a>
 		<!-- <span>{child.props.path}</span> -->
 		<!-- <span>{section}</span> -->
 	</nav>
 </div>
+
+<script>
+	import { onMount } from 'svelte'
+	import { getSession } from '@sapper/app'
+	const session = getSession()
+
+	import { GET } from '../../_server/utils/loaders.js'
+
+	let collections = []
+	onMount(async () => {
+		collections = await GET('/api/collections/list.json')
+		console.log(collections)
+	})
+
+	export let section
+	export let segment
+</script>
 
 <style type="text/scss">
 	.dash {
