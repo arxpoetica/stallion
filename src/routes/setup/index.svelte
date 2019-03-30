@@ -1,4 +1,4 @@
-<Form title="Setup" subtitle="Let's set up your Stallion headless CMS.">
+<MiniForm title="Setup" subtitle="Let's set up your Stallion headless CMS.">
 	<h2>Pick a username, email, and password</h2>
 	<label data-valid={usernameValid}>
 		<span class="ghost">Pick a username</span>
@@ -22,7 +22,7 @@
 		{/if}
 	</label>
 	<button slot="post" class="button primary {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
-</Form>
+</MiniForm>
 
 {#if reload}
 	<ReloadBlock/>
@@ -35,7 +35,7 @@
 	import { onMount, setContext } from 'svelte'
 	import { GET, POST } from '../../_server/utils/loaders.js'
 	import { usernameRegex } from '../../_server/db/validators/generic.js'
-	import Form from '../../components/forms/Form.svelte'
+	import MiniForm from '../../components/forms/MiniForm.svelte'
 	import Popup from '../../components/forms/Popup.svelte'
 	import ReloadBlock from '../../components/shared/ReloadBlock.svelte'
 
@@ -106,8 +106,8 @@
 	onMount(() => setTimeout(() => usernameInput.focus(), 0))
 
 	let reload = false
-	setContext('form.signup', {
-		signup: async (event) => {
+	setContext('form.submit', {
+		submit: async (event) => {
 			event.preventDefault()
 			if (submittable) {
 				const res = await POST('/api/signup.json', { username, email, password })

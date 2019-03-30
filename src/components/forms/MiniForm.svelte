@@ -1,10 +1,13 @@
-<div class="form">
+<div class="mini-form">
 	<h1>{title}</h1>
 	{#if subtitle}
 		<p>{subtitle}</p>
 	{/if}
 	<slot name="head"></slot>
-	<form on:submit={internalSignup}>
+	{#if message}
+		<div class="error">{message}</div>
+	{/if}
+	<form on:submit={internalSubmit}>
 		<slot name="pre"></slot>
 		<div class="fieldset">
 			<slot></slot>
@@ -18,18 +21,27 @@
 
 	export let title = 'Please fill out details'
 	export let subtitle
+	export let message
 
-	const { signup } = getContext('form.signup')
-	async function internalSignup(event) {
+	const { submit } = getContext('form.submit')
+	async function internalSubmit(event) {
 		event.preventDefault()
-		signup(event)
+		submit(event)
 	}
 </script>
 
 <style type="text/scss">
-	.form {
+	.mini-form {
 		max-width: 400px;
 		margin: 0 auto;
+	}
+	.error {
+		margin: 0 0 1rem;
+		padding: 1rem;
+		background-color: $red-l5;
+		border: 1px solid $red-main;
+		color: $red-dark;
+		font-weight: $bold;
 	}
 	.fieldset {
 		margin: 0 0 12px;
