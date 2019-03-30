@@ -19,7 +19,7 @@ export async function appSetup(app) {
 		app.get('*', (req, res, next) => {
 			if (
 				req.originalUrl.indexOf('/client/') === 0 ||
-				req.originalUrl.indexOf('/internal-api/') === 0 ||
+				req.originalUrl.indexOf('/api/') === 0 ||
 				req.originalUrl === '/setup'
 			) {
 				return next()
