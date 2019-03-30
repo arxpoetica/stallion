@@ -106,7 +106,7 @@
 	onMount(() => setTimeout(() => usernameInput.focus(), 0))
 
 	let reload = false
-	setContext('form.submit', {
+	setContext('mini-form.submit', {
 		submit: async (event) => {
 			event.preventDefault()
 			if (submittable) {
