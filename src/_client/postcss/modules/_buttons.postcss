@@ -1,7 +1,8 @@
 .buttons {
-	display: grid;
-	grid-gap: 1rem;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	display: flex;
+	.btn {
+		margin: 0 0.25rem;
+	}
 }
 .btn {
 	display: inline-flex;
@@ -10,8 +11,8 @@
 	margin: 0 0 1rem;
 	padding: 0.8rem 1.6rem;
 	background-color: $green-l2;
-	border: 1px solid transparent;
-	border-radius: 1px;
+	border: 0.1rem solid transparent;
+	border-radius: 0.2rem;
 	color: $white;
 	font: $bold 1.4rem/1 $font;
 	text-align: center;
@@ -37,7 +38,7 @@
 		text-transform: uppercase;
 	}
 	&.small {
-		padding: 0.6rem 1rem;
+		padding: 0.5rem 0.8rem;
 		font-size: 1.1rem;
 		text-transform: uppercase;
 	}

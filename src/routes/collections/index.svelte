@@ -1,27 +1,29 @@
 <h1>Collections</h1>
 
-<!-- <h2>Node Collections</h2>
-<ul>
-	{#each collections.nodes as node}
-		<li><a href="/settings/admin/collections/{node.name}">{node.name}</a></li>
-	{/each}
-</ul>
+<List {items} {actions}/>
 
-<h2>Edge Collections</h2>
-<ul>
-	{#each collections.edges as edge}
-		<li><a href="/settings/admin/collections/{edge.name}">{edge.name}</a></li>
-	{/each}
-</ul> -->
-
-<!-- <script context="module">
-	import { GET } from '../../_server/utils/loaders'
+<script>
+	import List from '../../components/List.svelte'
 	import { collections } from '../../stores/app-store'
 
-</script> -->
-<script>
-	
-	export let collections
+	$: items = $collections.map(collection => {
+		return {
+			url: `/collections/${collection.name}`,
+			name: collection.name,
+		}
+	})
+
+	import { POST } from '../../_server/utils/loaders'
+	const actions = {
+		remove: async name => {
+			await POST('/api/collections/delete.json', { name })
+			const index = $collections.findIndex(col => col.name === name)
+			collections.update(arr => {
+				arr.splice(index, 1)
+				return arr
+			})
+		},
+	}
 </script>
 
 <!-- <style type="text/scss">

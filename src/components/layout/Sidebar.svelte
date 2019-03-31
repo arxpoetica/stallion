@@ -21,8 +21,8 @@
 	export let section
 	export let segment
 
-	import { GET } from '../../_server/utils/loaders.js'
-	import { collections } from '../../stores/app-store.js'
+	import { GET } from '../../_server/utils/loaders'
+	import { collections } from '../../stores/app-store'
 	onMount(async () => {
 		const list = await GET('/api/collections/list.json')
 		list.sort((a, b) => a.name.localeCompare(b.name))
