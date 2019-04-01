@@ -2,15 +2,15 @@ import { driver } from '../../../_server/db/arangodb-driver.js'
 const db = driver.connect()
 
 export async function get(req, res) {
-	const list = await db.listCollections()
-	const collections = list
-		.filter(item => item.name.indexOf('stallion-') === 0)
-		.map(item => {
-			return {
-				id: item.id,
-				name: item.name.split('stallion-')[1],
-				type: item.type,
-			}
-		})
+	const Collections = db.collection('collections')
+	const cursor = await Collections.all()
+	const list = await cursor.all()
+	const collections = list.map(item => {
+		return {
+			id: item._key,
+			name: item.name,
+			description: item.description,
+		}
+	})
 	res.json(collections)
 }

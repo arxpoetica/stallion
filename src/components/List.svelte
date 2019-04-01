@@ -3,16 +3,16 @@
 		<li>
 			<div class="head">
 				<h2>{item.name}</h2>
-				<div class="buttons">
-					<a class="btn small" href={item.url}>Edit</a>
-					{#if actions.remove}
-						<button class="btn small alert" on:click={() => remove(item.name)}>Delete</button>
-					{/if}
-				</div>
+				{#if item.description}
+					<p>{item.description}</p>
+				{/if}
 			</div>
-			{#if item.description}
-				<p>{item.description}</p>
-			{/if}
+			<div class="buttons">
+				<a class="btn small" href={item.url}>Edit</a>
+				{#if actions.remove}
+					<button class="btn small alert" on:click={() => remove(item)}>Delete</button>
+				{/if}
+			</div>
 		</li>
 	{/each}
 </ul>
@@ -20,10 +20,9 @@
 <script>
 	export let items = []
 	export let actions = {}
-	function remove(name) {
-		if (confirm(`Are you sure you want to delete "${name}"?`)) {
-			// TODO: this should maybe be an `id`
-			actions.remove(name)
+	function remove(item) {
+		if (confirm(`Are you sure you want to delete "${item.name}"?`)) {
+			actions.remove(item)
 		}
 	}
 </script>
@@ -36,6 +35,9 @@
 		font: 1.6rem/1.2 $font;
 	}
 	li {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin: 0 0 0.5rem;
 		padding: 1rem;
 		background-color: $gray-light;
@@ -47,13 +49,15 @@
 		// }
 	}
 	.head {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		padding-right: 1rem;
 	}
 	h2 {
 		margin: 0;
 		font: $bold 1.6rem/1.2 $font;
+	}
+	p {
+		margin: 1.2rem 0 0;
+		font: 1.3rem $font;
 	}
 	a {
 		// display: block;

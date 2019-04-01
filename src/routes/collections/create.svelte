@@ -33,6 +33,7 @@
 			collections.update(arr => {
 				// TODO: SORT IT!
 				arr.push(collection)
+				arr.sort((a, b) => a.name.localeCompare(b.name))
 				return arr
 			})
 		}

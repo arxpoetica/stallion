@@ -5,13 +5,18 @@ const db = driver.connect()
 export async function post(req, res) {
 
 	try {
-		const { name } = req.body
+		const { _key, name } = req.body
 		const collectionName = `stallion-${name}`
 		const Collection = db.collection(collectionName)
 		const exists = await Collection.exists()
 		if (exists) {
-			const info = await Collection.drop()
-			log(info, `Dropping "${name}" collection`)
+			// delete the collection
+			log(await Collection.drop(), `Dropping "${name}" collection`)
+
+			// delete the collection information
+			const Collections = db.collection('collections')
+			log(await Collections.remove(_key), `Removing "${name}" doc info from Collections collection`)
+
 			res.json({ success: 1, message: 'All went well.' })
 		} else {
 			throw new Error('Collection does not exist.')

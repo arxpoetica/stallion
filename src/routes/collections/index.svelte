@@ -8,16 +8,18 @@
 
 	$: items = $collections.map(collection => {
 		return {
+			id: collection.id,
 			url: `/collections/${collection.name}`,
 			name: collection.name,
+			description: collection.description,
 		}
 	})
 
 	import { POST } from '../../_server/utils/loaders'
 	const actions = {
-		remove: async name => {
-			await POST('/api/collections/delete.json', { name })
-			const index = $collections.findIndex(col => col.name === name)
+		remove: async item => {
+			await POST('/api/collections/delete.json', { _key: item.id, name: item.name })
+			const index = $collections.findIndex(col => col.id === item.id)
 			collections.update(arr => {
 				arr.splice(index, 1)
 				return arr

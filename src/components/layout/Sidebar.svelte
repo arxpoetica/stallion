@@ -24,9 +24,9 @@
 	import { GET } from '../../_server/utils/loaders'
 	import { collections } from '../../stores/app-store'
 	onMount(async () => {
-		const list = await GET('/api/collections/list.json')
-		list.sort((a, b) => a.name.localeCompare(b.name))
-		collections.set(list)
+		const arr = await GET('/api/collections/list.json')
+		arr.sort((a, b) => a.name.localeCompare(b.name))
+		collections.set(arr)
 	})
 </script>
 
