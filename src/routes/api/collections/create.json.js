@@ -6,14 +6,15 @@ export async function post(req, res) {
 
 	try {
 		const { name, description } = req.body
-		const Collection = db.collection(name)
+		const collectionName = `stallion-${name}`
+		const Collection = db.collection(collectionName)
 		const exists = await Collection.exists()
 		if (!exists) {
 			const info = await Collection.create()
 			log(info, `Creating "${name}" collection`)
 			res.json({
 				id: info.id,
-				name: info.name,
+				name: name,
 				type: info.type,
 			})
 		} else {
