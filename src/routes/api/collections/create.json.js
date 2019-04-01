@@ -5,7 +5,15 @@ const db = driver.connect()
 export async function post(req, res) {
 
 	try {
-		const { name, description } = req.body
+		let { name, description } = req.body
+
+		// purifying it's soul
+		name = name
+			.toLowerCase()
+			.replace(/[^a-z0-9-]+/g, '')
+			.replace(/-+/g, '-')
+			.replace(/^-|-$/g, '')
+
 		const collectionName = `stallion-${name}`
 		const Collection = db.collection(collectionName)
 		const exists = await Collection.exists()

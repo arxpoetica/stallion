@@ -1,11 +1,8 @@
 <h1>Create a New Collection</h1>
 
-<Form {message}>
-	<label>
-		Name
-		<input bind:this={nameInput} bind:value={name} type="text" required="required">
-		<div class="help">Collection names should be plural.</div>
-	</label>
+<Form message={formMessage}>
+	<LabelInput bind:value={name} required={true} label="Name" help="Collection names should be plural." {valid} {message} focus={true}/>
+	<!-- nameInput -->
 	<label>
 		Description
 		<textarea bind:value={description}></textarea>
@@ -14,19 +11,18 @@
 </Form>
 
 <script>
-	import { onMount, setContext } from 'svelte'
+	import { beforeUpdate, setContext } from 'svelte'
 	import { getSession } from '@sapper/app'
 	const session = getSession()
 
 	import Form from '../../components/forms/Form.svelte'
+	import LabelInput from '../../components/forms/LabelInput.svelte'
 
-	let message
+	let formMessage
 	let name = ''
+	$: valid = name.length < 1 ? 'inert' : !name.match(/^-|[^a-z0-9-]|--|-$/g)
+	$: message = valid ? '' : 'Collection names must be alphanumeric, lowercase, and must start and end with a letter or number. Use single hyphens to divide words.'
 	let description = ''
-
-	// for some reason, it's not ready until clearing the stack
-	let nameInput
-	onMount(() => setTimeout(() => nameInput.focus(), 0))
 
 	import { POST } from '../../_server/utils/loaders.js'
 	import { collections } from '../../stores/app-store.js'
@@ -48,15 +44,8 @@
 		margin: 0 0 2rem;
 		font: 1.6rem/1 $font;
 	}
-	input {
-		margin: 0.5rem 0;
-	}
 	textarea {
 		height: 12rem;
 		margin: 0.5rem 0;
-	}
-	.help {
-		font: 1.2rem/1 $font;
-		color: $gray-3;
 	}
 </style>
