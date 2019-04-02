@@ -1,7 +1,7 @@
 <div class="settings settings-{section}">
 	<div class="side">
 		<nav class="menu">
-			{#if $session.user && $session.user.plan === 'admin'}
+			{#if $session.user && $session.user.role === 'admin'}
 				<h2>Admin</h2>
 				<a href="settings/admin/users" data-on="{section === 'users'}">Users</a>
 				{#if $session.env === 'development'}

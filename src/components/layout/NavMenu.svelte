@@ -5,7 +5,7 @@
 	</div>
 	<div class="dropdown">
 		<ul>
-			{#if $session.user && $session.user.plan === 'admin'}
+			{#if $session.user && $session.user.role === 'admin'}
 				<li><h2>Admin</h2></li>
 				<li><a href="/settings/admin/users">Users</a></li>
 				{#if $session.env === 'development'}
@@ -14,7 +14,7 @@
 				{/if}
 				<li class="div"></li>
 			{/if}
-			{#if $session.user && $session.user.plan === 'admin'}
+			{#if $session.user && $session.user.role === 'admin'}
 				<li><h2>User</h2></li>
 			{/if}
 			<li><a href="/st/{$session.user.username}">Profile</a></li>

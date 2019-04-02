@@ -28,7 +28,7 @@ export async function post(req, res) {
 			// first: '',
 			// last: '',
 			hash: await bcrypt.hash(password, 10),
-			plan: 'free', // for now
+			role: 'free', // for now
 		})
 
 		user.username = user._key

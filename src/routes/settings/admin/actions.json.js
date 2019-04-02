@@ -7,7 +7,7 @@ import collections from './_actions/collections'
 export async function post(req, res) {
 
 	const user = validate(req)
-	if (user.plan === 'admin') {
+	if (user.role === 'admin') {
 		const action = req.body.action
 		const key = req.body.key
 		let actionResponse = { errorcode: 3, message: 'Unknown error.' }
