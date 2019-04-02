@@ -1,12 +1,12 @@
 <div class="sidebar">
 	<nav class="menu">
 		<h2>
-			<a href="/collections">Collections</a>
-			<a href="/collections/create">Create +</a>
+			<a href="/contents">Contents</a>
+			<a href="/contents/create">Create +</a>
 		</h2>
-		{#each $collections as collection}
-			<!-- <a href="/collections/{collection.name}" data-on="{section === 'users'}">Users</a> -->
-			<a class="link" href="/collections/{collection.name}">{collection.name}</a>
+		{#each $contents as content}
+			<!-- <a href="/contents/{content.name}" data-on="{section === 'users'}">Users</a> -->
+			<a class="link" href="/contents/{content.name}">{content.name}</a>
 		{/each}
 		<h2>Settings</h2>
 		<a class="link" href="/settings/account/profile" data-on="{section === 'profile'}">Profile</a>
@@ -22,11 +22,11 @@
 	export let segment
 
 	import { GET } from '../../_server/utils/loaders'
-	import { collections } from '../../stores/app-store'
+	import { contents } from '../../stores/app-store'
 	onMount(async () => {
-		const arr = await GET('/api/collections/list.json')
+		const arr = await GET('/api/contents/list.json')
 		arr.sort((a, b) => a.name.localeCompare(b.name))
-		collections.set(arr)
+		contents.set(arr)
 	})
 </script>
 

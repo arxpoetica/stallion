@@ -1,26 +1,26 @@
-<h1>Collections</h1>
+<h1>Content Types</h1>
 
 <List {items} {actions}/>
 
 <script>
 	import List from '../../components/List.svelte'
-	import { collections } from '../../stores/app-store'
+	import { contents } from '../../stores/app-store'
 
-	$: items = $collections.map(collection => {
+	$: items = $contents.map(content => {
 		return {
-			id: collection.id,
-			url: `/collections/${collection.name}`,
-			name: collection.name,
-			description: collection.description,
+			id: content.id,
+			url: `/contents/${content.name}`,
+			name: content.name,
+			description: content.description,
 		}
 	})
 
 	import { POST } from '../../_server/utils/loaders'
 	const actions = {
 		remove: async item => {
-			await POST('/api/collections/delete.json', { _key: item.id, name: item.name })
-			const index = $collections.findIndex(col => col.id === item.id)
-			collections.update(arr => {
+			await POST('/api/contents/delete.json', { _key: item.id, name: item.name })
+			const index = $contents.findIndex(col => col.id === item.id)
+			contents.update(arr => {
 				arr.splice(index, 1)
 				return arr
 			})

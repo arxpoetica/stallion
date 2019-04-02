@@ -12,22 +12,22 @@ export async function appSetup(app) {
 		log(await Users.create(), 'Creating `Users` collection')
 	}
 
-	const Collections = db.collection('collections')
-	exists = await Collections.exists()
+	const Contents = db.collection('contents')
+	exists = await Contents.exists()
 	if (!exists) {
-		log(await Collections.create(), 'Creating `Collections` collection')
+		log(await Contents.create(), 'Creating `Contents` collection')
 	}
 	const News = db.collection('stallion-news')
 	exists = await News.exists()
 	if (!exists) {
 		log(await News.create(), 'Creating `News` collection')
-		log(await Collections.save({ name: 'news', description: 'Add news or posts to your site.' }))
+		log(await Contents.save({ name: 'news', description: 'Add news or posts to your site.' }))
 	}
 	const Tags = db.collection('stallion-tags')
 	exists = await Tags.exists()
 	if (!exists) {
 		log(await Tags.create(), 'Creating `Tags` collection')
-		log(await Collections.save({ name: 'tags', description: 'Tag items for your site.' }))
+		log(await Contents.save({ name: 'tags', description: 'Tag items for your site.' }))
 	}
 
 	// check if app needs to be initialized / setup

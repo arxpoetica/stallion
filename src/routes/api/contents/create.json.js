@@ -14,17 +14,17 @@ export async function post(req, res) {
 			.replace(/-+/g, '-')
 			.replace(/^-|-$/g, '')
 
-		const collectionName = `stallion-${name}`
-		const Collection = db.collection(collectionName)
-		const exists = await Collection.exists()
+		const contentName = `stallion-${name}`
+		const Content = db.collection(contentName)
+		const exists = await Content.exists()
 		if (!exists) {
-			// create the collection
-			log(await Collection.create(), `Creating "${name}" collection`)
+			// create the content
+			log(await Content.create(), `Creating "${name}" Content collection`)
 
-			// save the collection information
-			const Collections = db.collection('collections')
-			const info = await Collections.save({ name, description })
-			log(info, `Saving "${name}" doc info to Collections collection`)
+			// save the content information
+			const Contents = db.collection('contents')
+			const info = await Contents.save({ name, description })
+			log(info, `Saving "${name}" doc info to Contents collection`)
 
 			res.json({
 				id: info._key,
@@ -32,7 +32,7 @@ export async function post(req, res) {
 				description,
 			})
 		} else {
-			throw new Error('Collection already exists.')
+			throw new Error('Content already exists.')
 		}
 	} catch (error) {
 		res.json({ error: 1, message: error.message })
