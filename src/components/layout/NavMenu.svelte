@@ -83,7 +83,7 @@
 	.avatar {
 		width: 40px;
 		height: 40px;
-		background: none no-repeat center gray;
+		background: none no-repeat center $red-l4;
 		background-size: cover; // border-radius: 100%;
 		// clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 		/* clip-path: url('/svg/logo-header.svg'); */

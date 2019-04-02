@@ -1,7 +1,14 @@
 <div class="layout">
 	<Header segment={segment || 'home'}/>
-	<main>
-		<slot></slot>
+	<main class={$session.user ? 'private' : 'public'}>
+		{#if $session.user}
+			<Sidebar {section} segment={segment || 'home'}/>
+			<div class="content">
+				<slot></slot>
+			</div>
+		{:else}
+			<slot></slot>
+		{/if}
 	</main>
 </div>
 
@@ -10,6 +17,7 @@
 	import { getSession } from '@sapper/app'
 	import { target } from '../stores/app-store.js'
 	import Header from '../components/layout/Header.svelte'
+	import Sidebar from '../components/layout/Sidebar.svelte'
 
 	const session = getSession()
 	const { user } = $session
@@ -83,6 +91,13 @@
 		width: 100%;
 		max-width: $max;
 		padding: 40px 20px 20px;
+		&.private {
+			display: flex;
+		}
+	}
+	.content {
+		flex: 1 0 calc(100% - resolve($sidebar-width + 2rem));
+		min-width: 0;
 	}
 	@media (--small) {
 		.layout {

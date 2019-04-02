@@ -10,6 +10,7 @@ export const log = (logs, grouping) => {
 	console.log(`${start} ${magenta(grouping)}`)
 	logs.forEach(log => console.dir(log, { depth: null, colors: true }))
 	console.log(stop)
+	console.log()
 }
 
 // const Papa = require('papaparse')

@@ -7,10 +7,27 @@ export async function appSetup(app) {
 	// FIXME: restart app after running the following: ??????????
 
 	const Users = db.collection('users')
-	const exists = await Users.exists()
+	let exists = await Users.exists()
 	if (!exists) {
 		log(await Users.create(), 'Creating `Users` collection')
-		console.log()
+	}
+
+	const Contents = db.collection('contents')
+	exists = await Contents.exists()
+	if (!exists) {
+		log(await Contents.create(), 'Creating `Contents` collection')
+	}
+	const News = db.collection('stallion-news')
+	exists = await News.exists()
+	if (!exists) {
+		log(await News.create(), 'Creating `News` collection')
+		log(await Contents.save({ name: 'news', description: 'Add news or posts to your site.' }))
+	}
+	const Tags = db.collection('stallion-tags')
+	exists = await Tags.exists()
+	if (!exists) {
+		log(await Tags.create(), 'Creating `Tags` collection')
+		log(await Contents.save({ name: 'tags', description: 'Tag items for your site.' }))
 	}
 
 	// check if app needs to be initialized / setup
@@ -19,7 +36,7 @@ export async function appSetup(app) {
 		app.get('*', (req, res, next) => {
 			if (
 				req.originalUrl.indexOf('/client/') === 0 ||
-				req.originalUrl.indexOf('/internal-api/') === 0 ||
+				req.originalUrl.indexOf('/api/') === 0 ||
 				req.originalUrl === '/setup'
 			) {
 				return next()

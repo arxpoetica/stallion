@@ -1,4 +1,4 @@
-<Form title="Setup" subtitle="Let's set up your Stallion headless CMS.">
+<MiniForm title="Setup" subtitle="Let's set up your Stallion headless CMS.">
 	<h2>Pick a username, email, and password</h2>
 	<label data-valid={usernameValid}>
 		<span class="ghost">Pick a username</span>
@@ -22,7 +22,7 @@
 		{/if}
 	</label>
 	<button slot="post" class="button primary {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
-</Form>
+</MiniForm>
 
 {#if reload}
 	<ReloadBlock/>
@@ -33,9 +33,9 @@
 	const validate = debounce(cb => cb(), 500)
 
 	import { onMount, setContext } from 'svelte'
-	import { GET, POST } from '../_services/loaders.js'
+	import { GET, POST } from '../../_server/utils/loaders.js'
 	import { usernameRegex } from '../../_server/db/validators/generic.js'
-	import Form from '../../components/forms/Form.svelte'
+	import MiniForm from '../../components/forms/MiniForm.svelte'
 	import Popup from '../../components/forms/Popup.svelte'
 	import ReloadBlock from '../../components/shared/ReloadBlock.svelte'
 
@@ -64,7 +64,7 @@
 			usernameValid = 'inert'
 			usernameMessage = ''
 			validate(async() => {
-				const res = await POST('/internal-api/signup-validate.json', {
+				const res = await POST('/api/signup-validate.json', {
 					type: 'username',
 					filters: { _key: username },
 				})
@@ -84,7 +84,7 @@
 		emailValid = 'inert'
 		emailMessage = ''
 		validate(async() => {
-			const res = await POST('/internal-api/signup-validate.json', {
+			const res = await POST('/api/signup-validate.json', {
 				type: 'email',
 				filters: { email },
 			})
@@ -106,11 +106,11 @@
 	onMount(() => setTimeout(() => usernameInput.focus(), 0))
 
 	let reload = false
-	setContext('form.signup', {
-		signup: async (event) => {
+	setContext('mini-form.submit', {
+		submit: async (event) => {
 			event.preventDefault()
 			if (submittable) {
-				const res = await POST('/internal-api/signup.json', { username, email, password })
+				const res = await POST('/api/signup.json', { username, email, password })
 				if (res.error) {
 					console.group('error!')
 					console.log(res.error)
@@ -119,7 +119,7 @@
 					// FIXME: handle the error!!!!
 					// FIXME: handle the error!!!!
 				} else {
-					// const res = await GET('/internal-api/restart.json')
+					// const res = await GET('/api/restart.json')
 					// window.location.reload(true)
 					reload = true
 				}

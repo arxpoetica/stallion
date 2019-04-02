@@ -29,12 +29,12 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		background-color: $bg2;
+		background-color: $red-main;
 		color: $black;
 		font: $bold 1.5rem/1 $font;
 		z-index: $z-front;
 		&.no-auth {
-			background-color: $bg2;
+			background-color: $red-main;
 			color: $black;
 			.header-evil-wrap {
 				height: $header-height-noauth;
