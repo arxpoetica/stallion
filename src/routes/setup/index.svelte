@@ -21,7 +21,7 @@
 			<div class="popup"><Popup valid={false} message={passwordMessage}/></div>
 		{/if}
 	</label>
-	<button slot="post" class="button primary {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
+	<button slot="post" class="button {submittable ? '' : 'disabled'}" type="submit">Sign Up</button>
 </MiniForm>
 
 {#if reload}

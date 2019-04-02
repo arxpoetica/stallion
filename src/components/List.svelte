@@ -9,7 +9,7 @@
 			</div>
 			{#if $session.user.role === 'admin'}
 				<div class="buttons">
-					<a class="btn small" href={item.url}>Edit</a>
+					<a class="btn small warning" href={item.editUrl}>Edit</a>
 					{#if actions.remove}
 						<button class="btn small alert" on:click={() => remove(item)}>Delete</button>
 					{/if}

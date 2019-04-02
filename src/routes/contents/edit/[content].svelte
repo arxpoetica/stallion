@@ -1,6 +1,10 @@
 <div class="head">
 	<h1>Content Type</h1>
-	<a class="btn small warning" href={`/contents/edit/${$page.params.content}`}>Edit</a>
+	<div class="buttons">
+		<!-- FIXME: make these work -->
+		<a class="btn small success" href={`/contents/edit/${$page.params.content}`}>Save</a>
+		<a class="btn small alert" href={`/contents/edit/${$page.params.content}`}>Cancel</a>
+	</div>
 </div>
 
 <p>{$page.params.content}</p>

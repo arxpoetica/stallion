@@ -10,6 +10,7 @@
 		return {
 			id: content.id,
 			url: `/contents/${content.name}`,
+			editUrl: `/contents/edit/${content.name}`,
 			name: content.name,
 			description: content.description,
 		}
