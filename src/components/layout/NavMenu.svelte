@@ -1,6 +1,8 @@
 <li bind:this={menu} class="menu {open ? 'open' : 'shut'}">
 	<div class="target" on:click={openMenu}>
-		<div class="avatar" style="background-image: url({$session.user.avatar});"></div>
+		<div class="avatar">
+			<span style="background-image: url({$session.user.avatar});"></span>
+		</div>
 		<div class="arrow"></div>
 	</div>
 	<div class="dropdown">
@@ -77,21 +79,42 @@
 	}
 	.target {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 	}
 	.avatar {
-		width: 40px;
-		height: 40px;
-		background: none no-repeat center $red-l4;
-		background-size: cover; // border-radius: 100%;
-		// clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-		/* clip-path: url('/svg/logo-header.svg'); */
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		width: 4rem;
+		height: 4rem;
+		background-color: $white;
 		border-radius: 100%;
+		&::before {
+			content: '';
+			display: block;
+			width: 3rem;
+			height: 3rem;
+			margin: 0.2rem 0 0 -0.2rem;
+			background: url('/svg/logo-public.svg') no-repeat center transparent;
+			background-size: contain;
+		}
+		span {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: none no-repeat center transparent;
+			background-size: cover;
+			z-index: 2;
+		}
 	}
 	.arrow {
-		width: 12px;
-		height: 6px;
+		width: 1.2rem;
+		height: 0.6rem;
+		margin: 0 0 0 0.8rem;
 		background: url('/svg/arrow-down.svg') no-repeat center transparent;
 		opacity: 0.7;
 		z-index: 1;
@@ -115,7 +138,7 @@
 		}
 		.dropdown {
 			top: 100%;
-			right: 0;
+			right: -0.8rem;
 			left: auto;
 		}
 	}
