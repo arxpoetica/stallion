@@ -1,17 +1,11 @@
 <label>
 	<span class="text" class:ghost>{label}</span>
-
 	<span class="wrap" data-valid={valid}>
-
-		<!-- <select bind:this={select} bind:value> -->
-		<select bind:value>
+		<select bind:this={select} bind:value>
 			{#each options as option}
 				<option value={option.type}>{option.type}</option>
 			{/each}
 		</select>
-
-		<h2>{value}</h2>
-
 		{#if help}
 			<div class="help">{help}</div>
 		{/if}
@@ -22,6 +16,7 @@
 </label>
 
 <script>
+	import { onMount } from 'svelte'
 	import Popup from './Popup.svelte'
 
 	export let ghost = false
@@ -31,9 +26,16 @@
 	export let help = false
 	export let valid = 'inert'
 	export let message = ''
-	// export let focus = false
+	export let focus = false
 
 	let select
+
+	onMount(() => {
+		if (focus) {
+			// for some reason, it's not ready until clearing the stack
+			setTimeout(() => select.focus(), 0)
+		}
+	})
 </script>
 
 <style type="text/scss">
