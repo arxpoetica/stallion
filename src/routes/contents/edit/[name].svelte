@@ -1,11 +1,11 @@
 {#if content}
 	<div class="head">
 		<div class="bar">
-			<h1>{$page.params.name}</h1>
+			<h1>{content.name}</h1>
 			<div class="buttons">
 				<!-- FIXME: make these work -->
-				<a class="btn small success" href={`/contents/edit/${$page.params.name}`}>Save</a>
-				<a class="btn small alert" href={`/contents/edit/${$page.params.name}`}>Cancel</a>
+				<a class="btn small success" href={`/contents/edit/${content.name}`}>Save</a>
+				<a class="btn small alert" href={`/contents/edit/${content.name}`}>Cancel</a>
 			</div>
 		</div>
 		{#if content.description}
@@ -13,13 +13,23 @@
 		{/if}
 	</div>
 
-	<center>
-		<h2>There are no fields yet</h2>
-		<p>Add your first field to your new Content Type</p>
-		<button class="btn small">Add New Field</button>
-	</center>
+	<div class="fields">
+		{#if content.fields && content.fields.length}
+			<ul>
+				{#each content.fields as field}
+					<li>{field}</li>
+				{/each}
+			</ul>
+		{:else}
+			<h3>There are no fields yet</h3>
+			<p>Add your first field to content type "{content.name}".</p>
+			<div class="buttons">
+				<button class="btn small">Add New Field</button>
+			</div>
+		{/if}
+	</div>
 
-	<Form message={''}>
+	<!-- <Form message={''}> -->
 		<!-- <LabelSelect {options}/> -->
 		<!-- <LabelInput bind:value={name} required={true} label="Name" help="Content type names should be plural." {valid} {message} focus={true}/> -->
 		<!-- nameInput -->
@@ -28,9 +38,8 @@
 			<textarea bind:value={description}></textarea>
 		</label> -->
 		<!-- <button slot="post" type="submit" class="btn">Log In</button> -->
-	</Form>
+	<!-- </Form> -->
 
-	<p>{$page.params.name}</p>
 {:else}
 	<p>. . . loading . . .</p>
 {/if}
@@ -47,11 +56,7 @@
 </script>
 
 <script>
-	import { beforeUpdate, setContext } from 'svelte'
-
-	import { page/* , getSession */ } from '@sapper/app'
-	// const session = getSession()
-
+	import { setContext } from 'svelte'
 	import { options } from './_options'
 	import Form from '../../../components/forms/Form.svelte'
 	import LabelSelect from '../../../components/forms/LabelSelect.svelte'
@@ -86,5 +91,10 @@
 		.btn {
 			margin-bottom: 0;
 		}
+	}
+	.fields {
+		padding: 1rem;
+		border: 1px solid $gray-6;
+		background-color: $gray-light;
 	}
 </style>
