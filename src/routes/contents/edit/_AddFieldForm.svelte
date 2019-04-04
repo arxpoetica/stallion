@@ -52,7 +52,7 @@
 
 	export let content
 	let type
-	let recipe = {}
+	let recipe = { type }
 
 	let priorType = type
 	$: if (type !== priorType) {

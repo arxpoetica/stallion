@@ -2,9 +2,9 @@
 	<span class="text" class:ghost>{label}</span>
 	<span class="wrap" data-valid={valid}>
 		{#if placeholder}
-			<input bind:this={input} bind:value type="text" {placeholder} {required}>
+			<textarea bind:this={textarea} bind:value type="text" {placeholder} {required}></textarea>
 		{:else}
-			<input bind:this={input} bind:value type="text" {required}>
+			<textarea bind:this={textarea} bind:value type="text" {required}></textarea>
 		{/if}
 		{#if help}
 			<span class="help">{help}</span>
@@ -30,12 +30,9 @@
 	export let message = ''
 	export let focus = false
 
-	let input
+	let textarea
 
 	onMount(() => {
-		if (type !== 'text') {
-			input.type = type
-		}
 		if (focus) {
 			// for some reason, it's not ready until clearing the stack
 			setTimeout(() => input.focus(), 0)
@@ -67,7 +64,7 @@
 			background-size: cover;
 		}
 		&[data-valid="false"] {
-			input {
+			textarea {
 				border: 1px solid $red-dark;
 				box-shadow: 0 0 0 3px $red-light;
 			}
@@ -76,9 +73,11 @@
 			}
 		}
 	}
-	input {
+	textarea {
+		height: 9rem;
 		margin: 0 0 0.5rem;
 		padding: 0.5rem 3rem 0.5rem 0.5rem;
+		resize: none;
 	}
 	.help {
 		display: block;
