@@ -627,6 +627,11 @@ a, area, button, label, summary, [tabindex] {
 		margin-bottom: 0;
 	}
 
+.box.warning {
+		background-color: #fff8e4;
+		border-color: #fbe6ab;
+	}
+
 .flex {
 	display: flex;
 	margin: 0 0 2rem;

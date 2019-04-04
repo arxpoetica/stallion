@@ -12,7 +12,7 @@
 	{/if}
 </div>
 
-<div class="box">
+<div class="box {content.fields && content.fields.length ? '' : 'warning'}">
 	{#if content.fields && content.fields.length}
 		<ul>
 			{#each content.fields as field}

@@ -1,7 +1,3 @@
-<div class="dtf" style="margin-bottom:2rem;">
-	{JSON.stringify(recipe)}
-</div>
-
 <div class="box">
 	<Form message={''}>
 		<h3>Add New Field</h3>
@@ -28,6 +24,10 @@
 			<Relation bind:recipe/>
 		{/if}
 	</Form>
+</div>
+
+<div class="dtf" style="margin-bottom:2rem;">
+	{JSON.stringify(recipe)}
 </div>
 
 <script>
