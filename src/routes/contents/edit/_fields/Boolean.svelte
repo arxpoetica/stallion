@@ -8,16 +8,13 @@
 	import LabelInput from '../../../../components/forms/LabelInput.svelte'
 	import LabelCheckbox from '../../../../components/forms/LabelCheckbox.svelte'
 
+	export let recipe = {}
 	let name
 	let initial
 	let required
 	let unique
-
-	export let recipe = {}
-	$: {
-		recipe.value = name
-		recipe.initial = initial
-		recipe.required = required
-		recipe.unique = unique
-	}
+	$: recipe.value = name
+	$: recipe.initial = initial
+	$: recipe.required = required
+	$: recipe.unique = unique
 </script>

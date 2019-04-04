@@ -3,7 +3,7 @@
 	<span class="wrap" data-valid={valid}>
 		<select bind:this={select} bind:value>
 			{#each options as option}
-				<option value={option.type}>{option.type}</option>
+				<option value={option.value}>{option.name || option.value}</option>
 			{/each}
 		</select>
 		{#if help}
@@ -22,7 +22,7 @@
 	export let ghost = false
 	export let label = 'Select an option'
 	export let options = []
-	export let value = options.length ? options[0].type : ''
+	export let value = options.length ? options[0].value : ''
 	export let help = false
 	export let valid = 'inert'
 	export let message = ''

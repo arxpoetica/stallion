@@ -1,34 +1,34 @@
 export const options = [{
-	type: 'String',
+	value: 'String',
 	description: 'Titles, names, paragraphs, list of names',
 }, {
-	type: 'Text',
+	value: 'Text',
 	description: 'Descriptions, text paragraphs, articles',
 }, {
-	type: 'Number',
+	value: 'Number',
 	description: 'Everything that is number',
 }, {
-	type: 'Boolean',
+	value: 'Boolean',
 	description: 'Yes or no, 1 or 0, true or false',
 }, {
-	type: 'Date',
+	value: 'Date',
 	description: 'Event date, opening hours',
 // }, {
-// 	type: 'JSON',
+// 	value: 'JSON',
 // 	description: 'Data in JSON format',
 }, {
-	type: 'Email',
+	value: 'Email',
 	description: 'User\'s email...',
 // }, {
-// 	type: 'Password',
+// 	value: 'Password',
 // 	description: 'User password...',
 }, {
-	type: 'Media',
+	value: 'Media',
 	description: 'Images, videos, PDFs and other files',
 }, {
-	type: 'Relation',
+	value: 'Relation',
 	description: 'Refers to a Content Type',
 // }, {
-// 	type: 'Enumeration',
+// 	value: 'Enumeration',
 // 	description: 'List of choices',
 }]

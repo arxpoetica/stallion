@@ -33,8 +33,6 @@
 <script>
 	import { setContext } from 'svelte'
 	import { options } from './_options'
-	// import { options } from './_options'
-	// import AddFieldForm from './_AddFieldForm.svelte'
 	import Form from '../../../components/forms/Form.svelte'
 	import LabelSelect from '../../../components/forms/LabelSelect.svelte'
 
