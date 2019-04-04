@@ -1,0 +1,24 @@
+.box {
+	margin: 0 0 2rem;
+	padding: 1rem;
+	border: 1px solid $gray-6;
+	background-color: $gray-light;
+	:last-child {
+		margin-bottom: 0;
+	}
+	&.warning {
+		background-color: $yellow-light;
+		border-color: $yellow-l4;
+	}
+}
+
+.flex {
+	display: flex;
+	margin: 0 0 2rem;
+}
+.flex-split {
+	flex-basis: 48%;
+	&:last-child {
+		margin-left: 4%;
+	}
+}

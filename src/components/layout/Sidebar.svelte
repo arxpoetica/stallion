@@ -64,7 +64,7 @@
 			border: 0;
 		}
 		&:hover {
-			background-color: $green-l5;
+			background-color: $blue-light;
 		}
 		&[data-on="true"] {
 			padding-left: 1rem;

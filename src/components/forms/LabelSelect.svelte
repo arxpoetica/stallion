@@ -1,13 +1,13 @@
 <label>
 	<span class="text" class:ghost>{label}</span>
 	<span class="wrap" data-valid={valid}>
-		{#if placeholder}
-			<input bind:this={input} bind:value type="text" {placeholder} {required}>
-		{:else}
-			<input bind:this={input} bind:value type="text" {required}>
-		{/if}
+		<select bind:this={select} bind:value>
+			{#each options as option}
+				<option value={option.value}>{option.name || option.value}</option>
+			{/each}
+		</select>
 		{#if help}
-			<span class="help">{help}</span>
+			<div class="help">{help}</div>
 		{/if}
 		{#if !valid}
 			<span class="popup"><Popup valid={false} {message}/></span>
@@ -19,26 +19,21 @@
 	import { onMount } from 'svelte'
 	import Popup from './Popup.svelte'
 
-	export let type = 'text'
 	export let ghost = false
-	export let label = type
-	export let value = ''
-	export let placeholder = ''
-	export let required = false
+	export let label = 'Select an option'
+	export let options = []
+	export let value = options.length ? options[0].value : ''
 	export let help = false
 	export let valid = 'inert'
 	export let message = ''
 	export let focus = false
 
-	let input
+	let select
 
 	onMount(() => {
-		if (type !== 'text') {
-			input.type = type
-		}
 		if (focus) {
 			// for some reason, it's not ready until clearing the stack
-			setTimeout(() => input.focus(), 0)
+			setTimeout(() => select.focus(), 0)
 		}
 	})
 </script>
@@ -76,12 +71,10 @@
 			}
 		}
 	}
-	input {
+	select {
 		margin: 0 0 0.5rem;
-		padding: 0.5rem 3rem 0.5rem 0.5rem;
 	}
 	.help {
-		display: block;
 		font: 1.2rem/1 $font;
 		color: $gray-3;
 	}

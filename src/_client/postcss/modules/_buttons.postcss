@@ -10,7 +10,7 @@
 	justify-content: center;
 	margin: 0 0 1rem;
 	padding: 0.8rem 1.6rem;
-	background-color: $green-l2;
+	background-color: $blue-l2;
 	border: 0.1rem solid transparent;
 	border-radius: 0.2rem;
 	color: $white;
@@ -21,7 +21,7 @@
 	-webkit-appearance: none;
 	&:hover,
 	&:focus {
-		background-color: $green-l1;
+		background-color: $blue-l4;
 	}
 	.icon {
 		width: 22px;
@@ -65,23 +65,13 @@
 			background-color: $yellow-main;
 		}
 	}
-	&.primary {
-		background-color: $yellow-main;
-		color: $black;
-		&:hover,
-		&:focus {
-			background-color: $yellow-d2;
-			color: $black;
-		}
-	}
 	&.secondary {
-		// TODO: THIS SHOULD BE DIFFERENT
-		background-color: $yellow-main;
-		color: $black;
+		background-color: $green-main;
+		color: $white;
 		&:hover,
 		&:focus {
-			background-color: $yellow-d2;
-			color: $black;
+			background-color: $green-l2;
+			color: $white;
 		}
 	}
 	&.black {
@@ -89,21 +79,21 @@
 		color: white;
 	}
 	&.success {
-		background-color: #3adb76;
-		color: inherit;
+		background-color: $green-l2;
+		color: $white;
 		&:hover,
 		&:focus {
-			background-color: #22bb5b;
-			color: inherit;
+			background-color: $green-l3;
+			color: $white;
 		}
 	}
 	&.warning {
-		background-color: $orange-l2;
+		background-color: $yellow-l2;
 		color: $black;
 		&:hover,
 		&:focus {
-			background-color: $orange-d1;
-			color: $white;
+			background-color: $yellow-l4;
+			color: $black;
 		}
 	}
 	&.alert {
@@ -142,22 +132,6 @@
 	color: white;
 }
 
-.btn.disabled.primary,
-.btn[disabled].primary {
-	opacity: 0.25;
-	cursor: not-allowed;
-}
-
-.btn.disabled.primary,
-.btn.disabled.primary:hover,
-.btn.disabled.primary:focus,
-.btn[disabled].primary,
-.btn[disabled].primary:hover,
-.btn[disabled].primary:focus {
-	background-color: $yellow-main;
-	color: $black;
-}
-
 .btn.disabled.secondary,
 .btn[disabled].secondary {
 	opacity: 0.25;
@@ -170,8 +144,7 @@
 .btn[disabled].secondary,
 .btn[disabled].secondary:hover,
 .btn[disabled].secondary:focus {
-	// FIXME: this should be different
-	background-color: $yellow-main;
+	background-color: $green-l5;
 	color: $black;
 }
 
@@ -203,7 +176,7 @@
 .btn[disabled].warning,
 .btn[disabled].warning:hover,
 .btn[disabled].warning:focus {
-	background-color: #ffae00;
+	background-color: $yellow-l4;
 	color: inherit;
 }
 
