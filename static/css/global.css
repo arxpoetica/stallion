@@ -616,6 +616,30 @@ a, area, button, label, summary, [tabindex] {
 	cursor: default;
 }
 
+.box {
+	margin: 0 0 2rem;
+	padding: 1rem;
+	border: 1px solid #e1e5e6;
+	background-color: #f7f9fa;
+}
+
+.box :last-child {
+		margin-bottom: 0;
+	}
+
+.flex {
+	display: flex;
+	margin: 0 0 2rem;
+}
+
+.flex-split {
+	flex-basis: 48%;
+}
+
+.flex-split:last-child {
+		margin-left: 4%;
+	}
+
 .buttons {
 	display: flex;
 }

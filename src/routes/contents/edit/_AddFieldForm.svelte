@@ -1,29 +1,34 @@
-<Form message={''}>
-	<LabelSelect bind:value={name} {options} label="Add New Field" focus={true}/>
-	<!-- <LabelInput bind:value={name} required={true} label="Name" help="Content type names should be plural." {valid} {message} focus={true}/> -->
-	<!-- nameInput -->
-	<!-- <button slot="post" type="submit" class="btn">Log In</button> -->
+<div class="dtf" style="margin-bottom:2rem;">
+	{JSON.stringify(recipe)}
+</div>
 
-	{#if name === 'String'}
-		<String/>
-	{:else if name === 'Text'}
-		<Text/>
-	{:else if name === 'Number'}
-		<Number/>
-	{:else if name === 'Boolean'}
-		<Boolean/>
-	{:else if name === 'Date'}
-		<Date/>
-	{:else if name === 'Email'}
-		<Email/>
-	{:else if name === 'Media'}
-		<Media/>
-	{:else if name === 'Relation'}
-		<Relation/>
-	{/if}
+<div class="box">
+	<Form message={''}>
+		<h3>Add New Field</h3>
+		<LabelSelect bind:value={type} {options} label="Field type" focus={true}/>
+		<!-- <LabelInput bind:value={name} required={true} label="Name" help="Content type names should be plural." {valid} {message} focus={true}/> -->
+		<!-- nameInput -->
+		<!-- <button slot="post" type="submit" class="btn">Log In</button> -->
 
-</Form>
-
+		{#if type === 'String'}
+			<String bind:recipe/>
+		{:else if type === 'Text'}
+			<Text bind:recipe/>
+		{:else if type === 'Number'}
+			<Number bind:recipe/>
+		{:else if type === 'Boolean'}
+			<Boolean bind:recipe/>
+		{:else if type === 'Date'}
+			<Date bind:recipe/>
+		{:else if type === 'Email'}
+			<Email bind:recipe/>
+		{:else if type === 'Media'}
+			<Media bind:recipe/>
+		{:else if type === 'Relation'}
+			<Relation bind:recipe/>
+		{/if}
+	</Form>
+</div>
 
 <script>
 	import { setContext } from 'svelte'
@@ -46,7 +51,14 @@
 	// import Enumeration from './_fields/Enumeration.svelte'
 
 	export let content
-	let name
+	let type
+	let recipe = {}
+
+	let priorType = type
+	$: if (type !== priorType) {
+		priorType = type
+		recipe = { type }
+	}
 
 	setContext('form.submit', {
 		submit: async (event) => {
@@ -62,3 +74,9 @@
 		}
 	})
 </script>
+
+<style type="text/scss">
+	h3 {
+		margin: 0 0 2rem;
+	}
+</style>

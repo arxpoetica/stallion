@@ -12,7 +12,7 @@
 	{/if}
 </div>
 
-<div class="fields">
+<div class="box">
 	{#if content.fields && content.fields.length}
 		<ul>
 			{#each content.fields as field}
@@ -58,15 +58,6 @@
 		align-items: center;
 		h1,
 		.btn {
-			margin-bottom: 0;
-		}
-	}
-	.fields {
-		margin: 0 0 2rem;
-		padding: 1rem;
-		border: 1px solid $gray-6;
-		background-color: $gray-light;
-		:last-child {
 			margin-bottom: 0;
 		}
 	}
