@@ -1,16 +1,19 @@
 // FIXME: config should work
 // import config from './_server/build/config'
 import { white, green } from 'ansi-colors'
-import express from 'express'
+import { GraphQLServer } from 'graphql-yoga'
+
+import { prisma } from './_server/prisma/generated/prisma-client'
+import { resolvers } from './_server/prisma/resolvers'
+import { permissions } from './_server/prisma/permissions'
+
 import morgan from 'morgan'
 import helmet from 'helmet'
 import compression from 'compression'
 import sirv from 'sirv'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import { appSetup } from './_server/services/app-setup.js'
-import { authSetup } from './_server/services/auth-setup.js'
-import { validate } from './routes/_services/auth-check.js'
+// import { appSetup } from './_server/services/app-setup.js'
+// import { authSetup } from './_server/services/auth-setup.js'
+// import { validate } from './routes/_services/auth-check.js'
 import * as sapper from '@sapper/server'
 
 const { PORT, NODE_ENV } = process.env
@@ -30,7 +33,19 @@ process.on('unhandledRejection', error => console.error('Unhandled Rejection:'.r
 async function start() {
 
 	// NOTE: order matters!!! https://github.com/jaredhanson/passport/issues/14#issuecomment-4863459
-	const app = express()
+
+	const server = new GraphQLServer({
+		typeDefs: 'src/_server/prisma/schema.graphql',
+		resolvers,
+		middlewares: [permissions],
+		context: request => {
+			return {
+				...request,
+				prisma,
+			}
+		},
+	})
+	const app = server.express
 
 	app.use(morgan(development ? 'dev' : 'combined', {
 		skip: (req, res) => development ? false : res.statusCode < 400,
@@ -43,18 +58,13 @@ async function start() {
 	app.use(compression({ threshold: 0 }))
 	app.use(sirv('static', { development }))
 
-	// app.use(bodyParser.text())
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: true }))
-	app.use(cookieParser())
-
-	await appSetup(app)
-	await authSetup(app)
-	// await graphqlSetup(app)
+	// await appSetup(app)
+	// await authSetup(app)
 
 	app.use(sapper.middleware({
 		session: req => {
-			const user = validate(req)
+			// const user = validate(req)
+			const user = false
 			return {
 				env: NODE_ENV,
 				user: user.unauthorized ? null : user,
@@ -63,6 +73,7 @@ async function start() {
 		},
 	}))
 
+	// server.start(() => console.log('Server is running on http://localhost:4000'))
 	app.listen(PORT, setTimeout(() => {
 		console.log()
 		console.log('          ,~~_')
