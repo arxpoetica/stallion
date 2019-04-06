@@ -10,7 +10,6 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import { appSetup } from './_server/services/app-setup.js'
 import { authSetup } from './_server/services/auth-setup.js'
-import { graphqlSetup } from './_server/services/graphql-setup.js'
 import { validate } from './routes/_services/auth-check.js'
 import * as sapper from '@sapper/server'
 
@@ -51,7 +50,7 @@ async function start() {
 
 	await appSetup(app)
 	await authSetup(app)
-	await graphqlSetup(app)
+	// await graphqlSetup(app)
 
 	app.use(sapper.middleware({
 		session: req => {
