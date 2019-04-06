@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "ansi-colors": "3.2.4",
-    "arangojs": "6.10.0",
     "bcryptjs": "2.4.3",
     "compression": "1.7.4",
     "cross-fetch": "3.0.2",

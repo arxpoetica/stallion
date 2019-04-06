@@ -86,10 +86,9 @@ async function start() {
 		console.log('     ~~~   Stallion   ~~~   Headless CMS built atop Svelte and Sapper.')
 		console.log()
 		console.log(green(`     listening at ${white(process.env.STALLION_HOST)} in ${white(NODE_ENV)} mode on process ${white(process.pid)}`))
-		// console.log(JSON.stringify(process.env, null, 2))
-		if (development) {
-			console.log(green(`     Running ${white(`${process.env.STALLION_HOST}/graphiql`)} in development mode only...`))
-		}
+		// if (development) {
+		// 	console.log(green(`     Running ${white(`${process.env.STALLION_HOST}/graphiql`)} in development mode only...`))
+		// }
 		console.log()
 	}, 100))
 

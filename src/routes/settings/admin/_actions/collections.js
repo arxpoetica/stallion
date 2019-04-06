@@ -1,14 +1,10 @@
-// import { log } from '../../../../_server/utils/db-tools.js'
-import { getApi } from '../../../../_server/db/arangodb-api'
-const api = getApi()
-import { driver } from '../../../../_server/db/arangodb-driver'
-const db = driver.connect()
-
 export default {
 
-	list: async(collection) => await db.listCollections(true),
+	// list: async(collection) => await db.listCollections(true),
+	list: async() => { return { error: 1, message: 'this endpoint needs to be aligned w/ GQL.' } },
 
-	getData: async(collection) => await api.getAll(collection),
+	// getData: async(collection) => await api.getAll(collection),
+	getData: async() => { return { error: 1, message: 'this endpoint needs to be aligned w/ GQL.' } },
 
 	// remove: async(key) => {
 	// 	try {
