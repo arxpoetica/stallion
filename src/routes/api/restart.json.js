@@ -1,10 +1,5 @@
 import child from 'child_process'
 
-// import config from '../../_server/build/config.js'
-// import { getApi } from '../../_server/db/arangodb-api.js'
-// const api = getApi()
-// const prod = process.env.NODE_ENV === 'production'
-
 export async function get(req, res) {
 	try {
 

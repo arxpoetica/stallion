@@ -6,12 +6,9 @@ import morgan from 'morgan'
 import helmet from 'helmet'
 import compression from 'compression'
 import sirv from 'sirv'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import { appSetup } from './_server/services/app-setup.js'
-import { authSetup } from './_server/services/auth-setup.js'
-import { graphqlSetup } from './_server/services/graphql-setup.js'
-import { validate } from './routes/_services/auth-check.js'
+// import { appSetup } from './_server/services/app-setup.js'
+// import { authSetup } from './_server/services/auth-setup.js'
+// import { validate } from './routes/_services/auth-check.js'
 import * as sapper from '@sapper/server'
 
 const { PORT, NODE_ENV } = process.env
@@ -44,18 +41,13 @@ async function start() {
 	app.use(compression({ threshold: 0 }))
 	app.use(sirv('static', { development }))
 
-	// app.use(bodyParser.text())
-	app.use(bodyParser.json())
-	app.use(bodyParser.urlencoded({ extended: true }))
-	app.use(cookieParser())
-
-	await appSetup(app)
-	await authSetup(app)
-	await graphqlSetup(app)
+	// await appSetup(app)
+	// await authSetup(app)
 
 	app.use(sapper.middleware({
 		session: req => {
-			const user = validate(req)
+			// const user = validate(req)
+			const user = false
 			return {
 				env: NODE_ENV,
 				user: user.unauthorized ? null : user,
@@ -76,10 +68,9 @@ async function start() {
 		console.log('     ~~~   Stallion   ~~~   Headless CMS built atop Svelte and Sapper.')
 		console.log()
 		console.log(green(`     listening at ${white(process.env.STALLION_HOST)} in ${white(NODE_ENV)} mode on process ${white(process.pid)}`))
-		// console.log(JSON.stringify(process.env, null, 2))
-		if (development) {
-			console.log(green(`     Running ${white(`${process.env.STALLION_HOST}/graphiql`)} in development mode only...`))
-		}
+		// if (development) {
+		// 	console.log(green(`     Running ${white(`${process.env.STALLION_HOST}/graphiql`)} in development mode only...`))
+		// }
 		console.log()
 	}, 100))
 

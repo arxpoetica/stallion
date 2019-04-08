@@ -62,7 +62,7 @@
 			background-size: cover;
 		}
 		&[data-valid="false"] {
-			input {
+			select {
 				border: 1px solid $red-dark;
 				box-shadow: 0 0 0 3px $red-light;
 			}
